@@ -13,10 +13,16 @@ All code is written Python. Libraries required:
   - numpy, scipy
   - Qibo
 
-##### Files included:
-  - [main.py]: Main file to execute the code
-  - [proba.py]: Functions for probability calculation and classical simulation for collision
-  - [circuit.py]: Functions for quantum circuit simulation
+#### Usage
+In this example there are only three files
+- `proba.py` contains the classical functions that are needed to run the experiment.
+- `circuit.py` encodes all quantum circuits and procedures needed to run the circuits.
+- `main.py` is the file calling all other functions. The action of every line of code is commented in the source code.
+
+The parameters to be fixed for a run of the experiment are
+- `m`: number of cells
+- `n`: n+1 for number of qubits in each cells
+- `t`: number of iterations
 
 ##### How to cite
 
