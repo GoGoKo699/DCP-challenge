@@ -20,24 +20,29 @@ In this example there are only three files
 - `main.py` is the file calling all other functions. The action of every line of code is commented in the source code.
 
 The parameters to be fixed for a run of the experiment are
-- `m`: number of cells
-- `n`: n+1 for number of qubits in each cells
-- `t`: number of iterations
+- `m`: number of cells, default = 4
+- `n`: n+1 for number of qubits in each cells,  default = 3
+- `t`: number of iterations, default = 3
 
-As an example, we fix r=1000, in order to simulate a DCP challenge for m=4, n=3, t=3,
+The defaut setting takes about 30 seconds to execute on a laptop.
+
+As an example, we fix r=1000, in order to simulate a DCP challenge for m=6, n=5, t=5,
 you should execute the following command:
 
 ```python
-python main.py --m 4 --n 3 --t 3
+python main.py --m 6 --n 5 --t 5
 ```
 
-Nosie map for noisy circuit simulation can be modified in  `circuit.py`.
+`r` can be modified in `main.py`,
+and the nosie map for noisy circuit simulation can be modified in  `circuit.py`.
 
 #### Results
 
 ![prob](/Probability_distribution.png)
-bla
 
+The figure includes analytical p_lower and p_upper, one instance of p_clean and one instance of p_error,
+and 100 trials of p_bit to see the fluctuation.
+p_bit is identical with p_clean, it is a bitstring simulation instead of a quantum circuit simulation, and much faster.
 
 ##### How to cite
 
