@@ -35,7 +35,8 @@ Nosie map for noisy circuit simulation can be modified in  `circuit.py`.
 
 #### Results
 
-![prob](Probability_distribution.png)
+![prob](/Probability_distribution.png)
+
 
 
 ##### How to cite
