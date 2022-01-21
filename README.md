@@ -33,7 +33,7 @@ you should execute the following command:
 python main.py --m 6 --n 5 --t 5
 ```
 
-`r` can be modified in `main.py`,
+r can be modified in `main.py`,
 and the nosie map for noisy circuit simulation can be modified in  `circuit.py`.
 
 #### Results
@@ -42,7 +42,7 @@ and the nosie map for noisy circuit simulation can be modified in  `circuit.py`.
 
 The figure includes analytical p_lower and p_upper, one instance of p_clean and one instance of p_error,
 and 100 trials of p_bit to see the fluctuation.
-p_bit is identical with p_clean, it is a bitstring simulation instead of a quantum circuit simulation, and much faster.
+p_bit is identical to p_clean, it is just a bitstring simulation instead of a quantum circuit simulation, and much faster.
 
 ##### How to cite
 
