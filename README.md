@@ -10,7 +10,7 @@ It gives numerical simulations of DCP challenge.
 All code is written Python. Libraries required:
 
   - matplotlib for plots
-  - numpy, scipy
+  - numpy, statistics, random, time, argparse
   - Qibo
 
 #### Usage
