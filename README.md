@@ -3,7 +3,7 @@
 
 #### by  Ruge Lin
 
-This is a repository for all code written for the article *Verification of quantum computation capability for NISQ devices with dihedral coset problem*. 
+This is a repository for all code written for the article *A quantum computation capability verification protocol for NISQ devices with dihedral coset problem*. 
 
 It gives numerical simulations of DCP challenge.
 
@@ -18,6 +18,7 @@ In this example there are only three files
 - `proba.py` contains probability calculation and classical simulation.
 - `circuit.py` contains functions for quantum circuits simulation.
 - `main.py` is the file calling all other functions. The action of every line of code is commented in the source code.
+- `plot.py` is the file to reproduce the Fig.4 in the article, it takes about 3 to 4 hours to run on a CPU of a laptop. 
 
 The parameters to be fixed for a run of the experiment are
 - `m`: number of cells, default = 4
@@ -47,4 +48,4 @@ p_bit is identical to p_clean, it is just a bitstring simulation instead of a qu
 ##### How to cite
 
 If you use this code in your research, please cite it as follows:
-Ruge Lin and Weiqiang Wen (2022). Verification of quantum computation capability for NISQ devices with dihedral coset problem.
+Ruge Lin and Weiqiang Wen (2022). A quantum computation capability verification protocol for NISQ devices with dihedral coset problem.
