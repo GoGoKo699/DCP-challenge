@@ -39,7 +39,7 @@ and the nosie map for noisy circuit simulation can be modified in  `circuit.py`.
 
 #### Results
 
-![prob1](/Probability_distribution.png)
+Out put image of `main.py`:
 
 <img src="/Probability_distribution.png" width="800" height="500">
 
@@ -47,7 +47,7 @@ The figure includes analytical p_lower and p_upper, one instance of p_clean and 
 and 100 trials of p_bit to see the fluctuation.
 p_bit is identical to p_clean, it is just a bitstring simulation instead of a quantum circuit simulation, and much faster.
 
-![prob2](/Numerical_Simulation.jpg)
+Out put image of `plot.py`:
 
 <img src="/Numerical_Simulation.jpg" width="800" height="500">
 
