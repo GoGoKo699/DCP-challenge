@@ -10,7 +10,7 @@ It gives numerical simulations of DCP challenge.
 All code is written Python. Libraries required:
 
   - matplotlib for plots
-  - numpy, statistics, random, time, argparse
+  - numpy, statistics, scipy, random, time, argparse
   - Qibo
 
 #### Usage
@@ -44,6 +44,8 @@ and the nosie map for noisy circuit simulation can be modified in  `circuit.py`.
 The figure includes analytical p_lower and p_upper, one instance of p_clean and one instance of p_error,
 and 100 trials of p_bit to see the fluctuation.
 p_bit is identical to p_clean, it is just a bitstring simulation instead of a quantum circuit simulation, and much faster.
+
+![prob](/Numerical_simulation.jpg)
 
 ##### How to cite
 
