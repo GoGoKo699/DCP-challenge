@@ -30,4 +30,4 @@ The nosie map for noisy circuit simulation can be modified in  `circuit.py`.
 If you use this code in your research, please cite it as follows:
 Ruge Lin and Weiqiang Wen (2022). A quantum computation capability verification protocol for NISQ devices with dihedral coset problem.
 [ arXiv:2202.06984 [quant-ph]] (https://arxiv.org/abs/2202.06984)
-[I'm an inline-style link](https://www.google.com)
+[I'm an inline-style link](https://arxiv.org/abs/2202.06984)
