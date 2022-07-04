@@ -17,10 +17,10 @@ All code is written Python. Libraries required:
 In this example there are six files
 - `proba.py` contains probability calculation and classical simulation.
 - `circuit.py` contains functions for quantum circuits simulation.
-- `compare.py` is the file to reproduce the FIG.5, the FIG.6 and the FIG.7. 
--  `verification.py` is the file to reproduce the FIG.8. 
--  `benchmarking.py` is the file to reproduce the FIG.9. 
--  `IBM.py` is the file to reproduce the FIG.18. 
+- `compare.py` is the file to reproduce the FIG.5a, the FIG.5b and the FIG.5c. 
+-  `verification.py` is the file to reproduce the FIG.6. 
+-  `benchmarking.py` is the file to reproduce the FIG.7. 
+-  `IBM.py` is the file to reproduce the FIG.9. 
 
 The nosie map for noisy circuit simulation can be modified in  `circuit.py`.
 
