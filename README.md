@@ -11,7 +11,7 @@ All code is written Python. Libraries required:
 
   - matplotlib for plots
   - numpy, statistics, scipy, random, time, argparse
-  - Qibo
+  - Qibo 0.1.10
 
 #### Usage
 In this example there are six files
