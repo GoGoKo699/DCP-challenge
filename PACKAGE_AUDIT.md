@@ -22,6 +22,7 @@
 - Corrected package installed in editable mode with build isolation disabled in the offline audit environment.
 - All four generated result files reproduced byte-for-byte from `scripts/generate_results.py`.
 - Internal Markdown links resolved successfully.
+- All Markdown mathematics uses GitHub-supported dollar-sign delimiters; legacy parenthesis and standalone bracket delimiters are absent.
 - `pyproject.toml`, `CITATION.cff`, and the GitHub Actions YAML parsed successfully.
 
 ## Historical integrity

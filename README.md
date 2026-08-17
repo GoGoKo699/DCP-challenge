@@ -9,23 +9,23 @@ This repository accompanies the 2022 article:
 
 The original ParitySolve circuit is correct on its selected collision branch, but the original capability-verification interpretation is not.
 
-The quantity denoted by \(p_B\) in the article is the success probability of one specified all-Hadamard decoder. It is not a sound upper bound on all strategies using those measurements and classical postprocessing. An exact two-sample counterexample achieves
+The quantity denoted by $p_B$ in the article is the success probability of one specified all-Hadamard decoder. It is not a sound upper bound on all strategies using those measurements and classical postprocessing. An exact two-sample counterexample achieves
 
-\[
+$$
 \frac{25}{32}
-\]
+$$
 
 using the same product measurements, whereas the published decoder gives
 
-\[
+$$
 \frac{23}{32}.
-\]
+$$
 
-Therefore, this repository no longer presents the condition \(p>p_B\) as a verification of quantum-computation capability.
+Therefore, this repository no longer presents the condition $p>p_B$ as a verification of quantum-computation capability.
 
 **What remains valid:** the DCP sample construction, the Fourier-label collision mechanism, the selected ParitySolve algebra, and the use of the circuit as a structured hardware-sensitive workload.
 
-**What is withdrawn:** the claim that the published \(p_B\) threshold supplies an adversarially sound capability-verification test.
+**What is withdrawn:** the claim that the published $p_B$ threshold supplies an adversarially sound capability-verification test.
 
 The full statement, derivations, corrected Figure 5 values, statistical correction, and IBM aggregate reanalysis are in:
 
@@ -58,11 +58,11 @@ They are retained for historical reproducibility and should be interpreted accor
 
 ## Corrected results at a glance
 
-| Figure | \((n,m,t)\) | Published \(p_B\) | Published upper bound | Exact honest probability | Full-likelihood all-H |
+| Figure | $(n,m,t)$ | Published $p_B$ | Published upper bound | Exact honest probability | Full-likelihood all-H |
 |---|---:|---:|---:|---:|---:|
-| 5(a) | \((4,6,1)\) | 0.660533 | 0.664083 | **0.652965** | **0.810940**, exact |
-| 5(b) | \((6,9,4)\) | 0.716371 | 0.817392 | **0.810918** | **0.937289**, Monte Carlo |
-| 5(c) | \((9,21,9)\) | 0.654461 | 0.906606 | **0.904804** | **0.957183**, Monte Carlo |
+| 5(a) | $(4,6,1)$ | 0.660533 | 0.664083 | **0.652965** | **0.810940**, exact |
+| 5(b) | $(6,9,4)$ | 0.716371 | 0.817392 | **0.810918** | **0.937289**, Monte Carlo |
+| 5(c) | $(9,21,9)$ | 0.654461 | 0.906606 | **0.904804** | **0.957183**, Monte Carlo |
 
 The exact honest probability is computed from the complementary-pair occupancy formula implemented in `src/dcp_challenge/exact_probabilities.py`.
 
@@ -93,9 +93,9 @@ The directory [witness/](witness/) contains a new phase-twirled, heralded constr
 
 Its narrow ideal-model claim is:
 
-> Against measurements separable across two trusted DCP input cells, every conclusive answer has conditional error at least \(1/4\), while a Bell measurement has zero error and conclusive probability \(1/(2N)\).
+> Against measurements separable across two trusted DCP input cells, every conclusive answer has conditional error at least $1/4$, while a Bell measurement has zero error and conclusive probability $1/(2N)$.
 
-For \(N=2\), the complete circuit uses four qubits, at most three CNOT gates, only Clifford operations, and no mid-circuit measurement. The statevector implementation is included and tested.
+For $N=2$, the complete circuit uses four qubits, at most three CNOT gates, only Clifford operations, and no mid-circuit measurement. The statevector implementation is included and tested.
 
 Start with [witness/README.md](witness/README.md).
 

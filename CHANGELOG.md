@@ -20,6 +20,7 @@
 - Added machine-readable JSON and CSV outputs.
 - Added a standalone Markdown, TeX, and PDF author correction.
 - Left all six original root scripts byte-for-byte unchanged.
+- Standardized Markdown mathematics to GitHub-supported delimiters and added explicit hidden-file upload checks for the CI workflow and `.gitignore`.
 
 ### Separate follow-up
 

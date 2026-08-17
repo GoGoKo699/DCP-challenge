@@ -13,14 +13,14 @@ The following statements remain supported:
 - the post-Fourier reflection phase state;
 - the complementary-label collision identity;
 - exact parity recovery on the selected ideal ParitySolve branch;
-- the special all-H outcome and its probability \(1/N\) for every \(n\);
+- the special all-H outcome and its probability $1/N$ for every $n$;
 - the published collision formulas when interpreted as upper and lower bounds;
 - ParitySolve as a structured DCP-derived circuit workload;
 - the original ideal and noise simulations as simulations of their specified models.
 
 ## Retained with narrower wording
 
-- The quantity formerly denoted \(p_B\) is retained only as the success probability of the *special-outcome all-H decoder*.
+- The quantity formerly denoted $p_B$ is retained only as the success probability of the *special-outcome all-H decoder*.
 - The IBM data are retained as aggregate evidence about a selected Bell-type branch, not as a direct end-to-end execution of the complete challenge.
 - Noise studies are illustrative benchmark simulations, not adversarial robustness proofs.
 
@@ -30,15 +30,15 @@ The following statements remain supported:
 - Figure 5(a) has negative exact honest separation from the special decoder.
 - Figure 5(b) has an exact honest gap of approximately 9.45 percent, not at least 10 percent.
 - Figure 5(c) retains an approximately 25.03 percent difference against the special decoder, but that comparison is not sound.
-- The standard error of empirical accuracy is \(\sqrt{p(1-p)/r}\).
+- The standard error of empirical accuracy is $\sqrt{p(1-p)/r}$.
 - The archived IBM aggregate reconstruction is 0.7439808125 under the documented corrected aggregation.
 
 ## Withdrawn
 
 The current repository withdraws these interpretations:
 
-- \(p_B\) bounds every weaker, product-measurement, or classically postprocessed strategy;
-- \(p>p_B\) verifies the claimed quantum-computation capability;
+- $p_B$ bounds every weaker, product-measurement, or classically postprocessed strategy;
+- $p>p_B$ verifies the claimed quantum-computation capability;
 - no better nonqualifying strategy exists;
 - the legacy `IBM.py` logic faithfully reconstructs the stated measured collision event.
 

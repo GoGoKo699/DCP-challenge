@@ -45,21 +45,21 @@ python examples/reproduce_figure5.py
 
 The no-complementary-collision probability is
 
-\[
+$$
 k_{\rm nc}(N,m)
 =
 N^{-m}
 \sum_j
 \binom{N/2}{j}2^j j!\,{m\brace j}.
-\]
+$$
 
 The ideal success probability is
 
-\[
+$$
 p_{\rm exact}
 =
 1-\frac12\left(\frac{1+k_{\rm nc}}2\right)^t.
-\]
+$$
 
 The Figure 5(a) complete all-H likelihood result is exact. Figure 5(b) and Figure 5(c) use the frozen fixed-seed Monte Carlo outputs listed below.
 

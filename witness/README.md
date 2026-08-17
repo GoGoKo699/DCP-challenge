@@ -12,41 +12,41 @@ It does not certify universal quantum computation, quantum speedup, a particular
 
 For two phase-twirled cells, conditioned on complementary Fourier labels, the parity ensembles are
 
-\[
+$$
 \sigma_0=\frac14|00\rangle\langle00|
 +\frac12|\Psi^+\rangle\langle\Psi^+|
 +\frac14|11\rangle\langle11|,
-\]
+$$
 
-\[
+$$
 \sigma_1=\frac14|00\rangle\langle00|
 +\frac12|\Psi^-\rangle\langle\Psi^-|
 +\frac14|11\rangle\langle11|.
-\]
+$$
 
 The honest Bell measurement has
 
-\[
+$$
 p_{\rm correct}=\frac1{2N},\qquad p_{\rm wrong}=0.
-\]
+$$
 
 Every separable strategy satisfies
 
-\[
+$$
 p_{\rm correct}\le 3p_{\rm wrong},
-\]
+$$
 
-so its conditional error, whenever it gives an answer, is at least \(1/4\).
+so its conditional error, whenever it gives an answer, is at least $1/4$.
 
 The separation is specifically about **confidence with abstention**. If inconclusive outcomes are replaced by random guesses, joint and separable strategies both reach
 
-\[
+$$
 \frac12+\frac1{4N}.
-\]
+$$
 
 ## Minimal implementation
 
-For \(N=2\), the witness uses four qubits and only Clifford gates. A complete round has at most three CNOT gates, no ancilla, no non-Clifford gate, no mid-circuit measurement, and no dynamic feed-forward.
+For $N=2$, the witness uses four qubits and only Clifford gates. A complete round has at most three CNOT gates, no ancilla, no non-Clifford gate, no mid-circuit measurement, and no dynamic feed-forward.
 
 The dependency-light statevector implementation is:
 

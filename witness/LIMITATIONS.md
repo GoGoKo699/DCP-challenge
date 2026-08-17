@@ -4,21 +4,21 @@ The ideal theorem is narrow. All of the following assumptions are material.
 
 ## Trusted quantum inputs
 
-The verifier prepares the input states. A cloud submission that exposes the gates encoding \(s\) or the shared phase \(\alpha\) does not implement the stated adversarial model. Side-channel leakage can likewise invalidate the soundness claim.
+The verifier prepares the input states. A cloud submission that exposes the gates encoding $s$ or the shared phase $\alpha$ does not implement the stated adversarial model. Side-channel leakage can likewise invalidate the soundness claim.
 
 ## Shared hidden phase
 
 The two cells require the same phase
 
-\[
+$$
 \alpha\in\{0,\pi/2,\pi,3\pi/2\}.
-\]
+$$
 
 The phase must remain hidden from the prover. Independent phases would change the collision ensembles; a disclosed phase would permit different attacks.
 
 ## Fresh sequential rounds
 
-The secret and phase are fresh in every round. The prover returns \(0,1\), or \(\perp\) before receiving the next pair. This prevents accumulation of many copies carrying the same hidden bit, which was the decisive problem in the original protocol.
+The secret and phase are fresh in every round. The prover returns $0,1$, or $\perp$ before receiving the next pair. This prevents accumulation of many copies carrying the same hidden bit, which was the decisive problem in the original protocol.
 
 ## Null class
 
@@ -43,11 +43,11 @@ The construction does not certify:
 
 ## Noise and robustness
 
-The committed theorem is ideal-model. If the two actual parity ensembles are within trace distances \(\epsilon_0\) and \(\epsilon_1\) of their ideal values, the equal-prior linear score can shift by at most
+The committed theorem is ideal-model. If the two actual parity ensembles are within trace distances $\epsilon_0$ and $\epsilon_1$ of their ideal values, the equal-prior linear score can shift by at most
 
-\[
+$$
 2(\epsilon_0+\epsilon_1),
-\]
+$$
 
 because the score range has width four. This observation is not yet a complete calibrated experimental soundness theorem. A practical deployment must characterize trusted-input errors and incorporate them into the null threshold.
 
