@@ -1,0 +1,6 @@
+# Historical dependency request for the untouched 2022 scripts.
+# This stack is not used by the corrected analysis or continuous integration.
+qibo==0.1.10
+numpy
+scipy
+matplotlib

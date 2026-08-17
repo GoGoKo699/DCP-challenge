@@ -1,0 +1,29 @@
+id,subject,status,scientific_basis,later_repository_treatment
+1,DCP sample definition,RETAIN,Standard normalized DCP state and fixed-secret ensemble,Keep in corrected technical description
+2,Post-QFT reflection phase state,RETAIN,Direct Fourier calculation checked,Keep
+3,Complementary-label collision algebra,RETAIN,Produces phase (-1)^s on selected branch,Keep
+4,ParitySolve selected branch is exact when noiseless,RETAIN,Final H measurement returns parity exactly,Keep with branch qualification
+5,Special all-H outcomes identify parity with probability 1/N,RETAIN_AND_STRENGTHEN,Analytic least-significant-bit proof valid for every n,Replace numerical conjecture with theorem
+6,p_B formula,RETAIN_NARROWLY,Exact success of the special-outcome decoder only,Rename explicitly and remove soundness language
+7,p_B bounds every measurement/classical strategy,WITHDRAW,Exact N=4 two-sample decoder gives 25/32 versus 23/32,Prominent author correction
+8,p greater than p_B verifies quantum-computation capability,WITHDRAW,Threshold lacks sound null-class bound and is explicitly defeated,Do not retain in current README
+9,No known nonquantum cheating strategy,WITHDRAW,Same H measurements plus classical likelihood decoding defeats threshold,Replace with precise counterexample
+10,No analytic expression for honest p,CORRECT,Exact Stirling-number formula for no-collision probability,Publish exact formula and code
+11,Published collision upper/lower bounds,RETAIN_AS_BOUNDS,Checked against exact values over regression range,Keep as historical comparison with non-strict inequalities
+12,Figure 5a establishes positive gap,CORRECT,Exact honest p=0.652965 is below p_B=0.660533,Mark figure interpretation invalid
+13,Figure 5b has at least 10 percent honest gap,CORRECT,Exact gap is 9.4547 percent,Replace with exact table
+14,Figure 5c has about 25 percent honest gap versus special decoder,NUMERICALLY_RETAIN_BUT_NOT_SOUND,Exact gap is 25.0343 percent but H likelihood decoder reaches about 95.7 percent,Do not present as verification
+15,Equation A10 standard deviation,CORRECT,Accuracy is Bernoulli with SE sqrt(p(1-p)/r),Correct code and note
+16,Qibo ideal collision simulation,RETAIN,Published clean means are consistent with exact p,Archive legacy and provide independent tests
+17,Noise simulations prove robustness,NARROW,They illustrate one noise model but do not prove adversarial or device-independent robustness,Describe as illustrative benchmark simulations
+18,DCP challenge as hardware-sensitive workload,RETAIN_NARROWLY,Circuit score depends on QFT inter-cell operation and readout,Use benchmark/workload language only
+19,IBM.py faithfully reconstructs hardware challenge,CORRECT,Code confuses prepared x labels with measured collision labels and omits four cases,Provide aggregate reanalysis and archive legacy script
+20,IBM experiment is end-to-end challenge,NARROW,Paper itself states reconstruction was required,Describe as postselected aggregate reconstruction
+21,Parity task has same complexity order as full DCP,RETAIN_WITH_QUALIFICATION,Bit-by-bit self-reduction is plausible but not needed for correction,Avoid headline reliance
+22,Eavesdropper and channel-security claims,UNSUPPORTED_NOT_RELIED_UPON,No formal adversary model or proof,Do not repeat in corrected README
+23,Generalized p greater than p_B template,CONDITIONAL_ONLY,Valid only when p_B is a proved optimum for an explicit null class,State as design principle not theorem
+24,Phase-twirled heralded witness ideal theorem,NEW_FOLLOW_UP_IDEAL_PROOF_PASSES,Full-state decomposition and tight separable ratio bound checked,Place separately and label non-peer-reviewed follow-up
+25,Heralded witness certifies universal quantum computation,REJECT,It certifies a nonseparable joint measurement under trusted-input assumptions,Use narrow capability statement
+26,Heralded witness ordinary accuracy gap,REJECT,Joint and separable forced-guess success are equal,Use confidence/abstention score only
+27,Heralded witness experimental robustness,OPEN,Trace-distance perturbation bound exists but trusted-input calibration is not developed,Do not claim experimental soundness yet
+28,Novelty of DCP heralded packaging,OPEN,Known state-comparison and semiquantum ingredients; exact DCP combination not located,Use conservative novelty language
