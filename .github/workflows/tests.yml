@@ -1,0 +1,25 @@
+name: corrected-analysis-tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Install corrected package
+        run: python -m pip install -e .[test]
+      - name: Run exact and numerical regression tests
+        run: pytest -q
+      - name: Reproduce decisive exact counterexample
+        run: python examples/reproduce_counterexample.py
+      - name: Reproduce corrected exact Figure 5 values
+        run: python examples/reproduce_figure5.py
+      - name: Check minimal four-qubit circuit
+        run: python examples/simulate_minimal_four_qubit_circuit.py
