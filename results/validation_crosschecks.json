@@ -1,0 +1,24 @@
+{
+  "purpose": "Independent-seed Monte Carlo cross-checks of the frozen Figure 5 likelihood-decoder estimates",
+  "figure5b": {
+    "n": 6,
+    "samples": 36,
+    "trials": 20000,
+    "seed": 20260821,
+    "successes": 18789,
+    "estimate": 0.93945,
+    "wilson_low": 0.9360594272680496,
+    "wilson_high": 0.9426717922422401
+  },
+  "figure5c": {
+    "n": 9,
+    "samples": 189,
+    "trials": 5000,
+    "seed": 20260822,
+    "successes": 4789,
+    "estimate": 0.9578,
+    "wilson_low": 0.951867024068152,
+    "wilson_high": 0.9630300680309537
+  },
+  "interpretation": "Both independent intervals contain or overlap the corresponding frozen estimates committed in figure5_corrected.csv."
+}

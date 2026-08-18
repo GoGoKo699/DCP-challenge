@@ -1,0 +1,39 @@
+cff-version: 1.2.0
+message: >-
+  Cite the 2022 Physical Review A article for the original ParitySolve
+  construction, and identify this repository correction when relying on the
+  corrected probability, soundness, or statistical analysis.
+title: "DCP Challenge: Author Correction and Follow-Up Analysis"
+type: software
+version: 1.1.0-author-correction
+date-released: 2026-08-17
+repository-code: "https://github.com/GoGoKo699/DCP-challenge"
+authors:
+  - family-names: Lin
+    given-names: Ruge
+preferred-citation:
+  type: article
+  title: "Quantum computation capability verification protocol for noisy intermediate-scale quantum devices with the dihedral coset problem"
+  authors:
+    - family-names: Lin
+      given-names: Ruge
+    - family-names: Wen
+      given-names: Weiqiang
+  journal: "Physical Review A"
+  volume: "106"
+  issue: "1"
+  year: 2022
+  month: 7
+  start: "012430"
+  doi: "10.1103/PhysRevA.106.012430"
+  url: "https://arxiv.org/abs/2202.06984"
+references:
+  - type: generic
+    title: "Author Technical Correction and Updated Analysis for the DCP challenge article"
+    authors:
+      - family-names: Lin
+        given-names: Ruge
+    year: 2026
+    month: 8
+    date-published: 2026-08-17
+    url: "https://github.com/GoGoKo699/DCP-challenge/tree/main/correction"
