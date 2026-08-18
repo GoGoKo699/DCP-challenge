@@ -1,6 +1,6 @@
 # Author Technical Correction and Updated Analysis
 
-## For “A quantum computation capability verification protocol for NISQ devices with dihedral coset problem”
+## For “Quantum computation capability verification protocol for noisy intermediate-scale quantum devices with the dihedral coset problem”
 
 **Ruge Lin**  
 **Date:** 17 August 2026
@@ -17,7 +17,7 @@ The reanalysis also strengthens the fair part of the original baseline: for one 
 
 This note concerns:
 
-Ruge Lin and Weiqiang Wen, “A quantum computation capability verification protocol for NISQ devices with dihedral coset problem,” *Physical Review A* **106**, 012430 (2022), DOI: `10.1103/PhysRevA.106.012430`, arXiv:2202.06984.
+Ruge Lin and Weiqiang Wen, “Quantum computation capability verification protocol for noisy intermediate-scale quantum devices with the dihedral coset problem,” *Physical Review A* **106**, 012430 (2022), DOI: `10.1103/PhysRevA.106.012430`, arXiv:2202.06984.
 
 The original repository state is preserved by the immutable GitHub release and tag `paper-2022-original`. The corrected repository adds new files but leaves the six original Python scripts unchanged.
 

@@ -2,7 +2,7 @@
 
 This repository accompanies the 2022 article:
 
-> Ruge Lin and Weiqiang Wen, “A quantum computation capability verification protocol for NISQ devices with dihedral coset problem,” *Physical Review A* **106**, 012430 (2022).  
+> Ruge Lin and Weiqiang Wen, “Quantum computation capability verification protocol for noisy intermediate-scale quantum devices with the dihedral coset problem,” *Physical Review A* **106**, 012430 (2022).  
 > DOI: `10.1103/PhysRevA.106.012430` - arXiv: `2202.06984`
 
 ## Scientific status - updated 17 August 2026
@@ -135,7 +135,7 @@ For the original ParitySolve construction and published article, cite:
 ```bibtex
 @article{lin2022dcpchallenge,
   author  = {Ruge Lin and Weiqiang Wen},
-  title   = {A quantum computation capability verification protocol for NISQ devices with dihedral coset problem},
+  title   = {Quantum computation capability verification protocol for noisy intermediate-scale quantum devices with the dihedral coset problem},
   journal = {Physical Review A},
   volume  = {106},
   pages   = {012430},

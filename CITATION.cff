@@ -13,7 +13,7 @@ authors:
     given-names: Ruge
 preferred-citation:
   type: article
-  title: "A quantum computation capability verification protocol for NISQ devices with dihedral coset problem"
+  title: "Quantum computation capability verification protocol for noisy intermediate-scale quantum devices with the dihedral coset problem"
   authors:
     - family-names: Lin
       given-names: Ruge

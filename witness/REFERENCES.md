@@ -20,6 +20,6 @@
 
 ## DCP project
 
-13. R. Lin and W. Wen, “A quantum computation capability verification protocol for NISQ devices with dihedral coset problem,” *Physical Review A* **106**, 012430 (2022). [DOI](https://doi.org/10.1103/PhysRevA.106.012430) - [arXiv:2202.06984](https://arxiv.org/abs/2202.06984)
+13. R. Lin and W. Wen, “Quantum computation capability verification protocol for noisy intermediate-scale quantum devices with the dihedral coset problem,” *Physical Review A* **106**, 012430 (2022). [DOI](https://doi.org/10.1103/PhysRevA.106.012430) - [arXiv:2202.06984](https://arxiv.org/abs/2202.06984)
 
 The general maximum-confidence GLOBAL-versus-separable certification principle is established prior art. No novelty is claimed for that principle. No exact earlier DCP-specific construction with the present phase twirl and tight factor-three proof was located in the searches completed by 17 August 2026; this is not a formal novelty determination.
