@@ -1,6 +1,6 @@
 # Protocol Specification
 
-Let $N=2^n$. Each round uses fresh randomness.
+Let $N=2^n$. Each round uses fresh independent randomness.
 
 ## Trusted preparation
 
@@ -25,7 +25,7 @@ $$
 \qquad j=1,2.
 $$
 
-The verifier supplies the quantum states, not a classical circuit description revealing $s$ or $\alpha$.
+The verifier supplies quantum states, not a classical circuit description revealing $s$ or $\alpha$.
 
 ## Honest measurement
 
@@ -40,15 +40,17 @@ The prover:
 4. Bell-measures the two reflection qubits;
 5. returns
    $$
-   \Psi^+\mapsto0,\qquad \Psi^-\mapsto1,
+   \Psi^+\mapsto0,
+   \qquad
+   \Psi^-\mapsto1,
    $$
-   and $\perp$ on the remaining Bell outcomes.
+   and returns $\perp$ on the remaining Bell outcomes.
 
 All measurements may be deferred to the end of the circuit.
 
-## Linear score
+## Single-round linear score
 
-For one round, assign
+Assign
 
 $$
 Z=
@@ -59,32 +61,67 @@ Z=
 \end{cases}
 $$
 
-Every separable strategy in the stated null class satisfies
+Every separable POVM in the single-round null class satisfies
 
 $$
-\mathbb E[Z]\le0.
+\mathbb E[Z]\le0,
 $$
 
-The ideal honest strategy satisfies
+whereas the ideal honest strategy satisfies
 
 $$
 \mathbb E[Z]=\frac1{2N}.
 $$
 
-## Conclusive-outcome test
+## Sequential null class
 
-An alternative test stops after $C$ conclusive answers. Under the separable null, the conditional error probability is at least $1/4$ on each conclusive round, including after conditioning on previous public history. A conservative lower-tail bound for observing at most $E$ errors is
+For repeated rounds, the prover may be adaptive but must remain within separable processing across the cell partition:
+
+- the initial persistent memory is separable across the two sides;
+- every round uses a separable instrument, including any LOCC instrument, on the fresh cells and persistent memory;
+- the prover may use arbitrary local ancillas, classical communication, and all preceding public history;
+- the prover outputs $0$, $1$, or $\perp$ before receiving the next pair.
+
+This condition preserves separability of the conditional memory and makes the one-round $1/4$ error bound applicable after every history.
+
+## Predeclared conclusive-outcome test
+
+Before the experiment, choose integers
 
 $$
+C\ge1,
+\qquad
+0\le E\le C,
+\qquad
+R\ge C.
+$$
+
+Run fresh sequential rounds until either:
+
+- $C$ conclusive answers have been received; or
+- $R$ total rounds have been used.
+
+The decision rule is:
+
+1. if fewer than $C$ conclusive answers occur by round $R$, issue **no certificate**;
+2. otherwise, accept only if at most $E$ of the first $C$ conclusive answers are wrong.
+
+Under the adaptive separable-instrument null, the false-certification probability is at most
+
+$$
+\boxed{
 \sum_{j=0}^{E}
 \binom{C}{j}
 \left(\frac14\right)^j
 \left(\frac34\right)^{C-j}.
+}
 $$
+
+This bound does not assume independent errors and permits adaptive abstention. It is a bound for one predeclared run. If unsuccessful runs are discarded and the experiment is restarted, all attempts must be reported or a multiple-testing correction must be applied.
 
 Examples:
 
 - 0 errors among 50 conclusive answers: $5.6632\times10^{-7}$;
 - at most 20 errors among 200 conclusive answers: $7.0323\times10^{-8}$.
 
-The experiment duration remains random because honest conclusive outcomes occur with probability $1/(2N)$.
+The honest experiment duration is random because a conclusive outcome occurs with probability $1/(2N)$ per ideal round.

@@ -49,7 +49,7 @@ def binomial_lower_tail(
     errors: int,
     null_error_probability: float = 0.25,
 ) -> float:
-    """Probability of at most ``errors`` under a binomial null model."""
+    """Binomial lower tail used by the adaptive sequential witness bound."""
     if conclusive < 0 or not 0 <= errors <= conclusive:
         raise ValueError("require 0 <= errors <= conclusive")
     if not 0.0 <= null_error_probability <= 1.0:
@@ -59,4 +59,24 @@ def binomial_lower_tail(
         * null_error_probability**j
         * (1.0 - null_error_probability) ** (conclusive - j)
         for j in range(errors + 1)
+    )
+
+
+
+def adaptive_sequential_lower_tail_bound(
+    conclusive: int,
+    errors: int,
+    conditional_error_lower_bound: float = 0.25,
+) -> float:
+    """Upper bound for an adaptive sequence with conditional error at least ``p``.
+
+    Independence is not assumed.  If every successive conclusive answer has
+    conditional error probability at least ``p`` given all previous public
+    history, then its error count stochastically dominates ``Binomial(C,p)``;
+    hence the probability of at most ``E`` errors is bounded by this lower tail.
+    """
+    return binomial_lower_tail(
+        conclusive,
+        errors,
+        null_error_probability=conditional_error_lower_bound,
     )

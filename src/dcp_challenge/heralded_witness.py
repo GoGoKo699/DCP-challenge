@@ -12,7 +12,7 @@ from typing import Dict, Tuple
 
 import numpy as np
 
-from .statistics import binomial_lower_tail
+from .statistics import adaptive_sequential_lower_tail_bound
 
 
 def _projector(vector: np.ndarray) -> np.ndarray:
@@ -165,8 +165,8 @@ def random_product_ratio_stress(
 
 def finite_sample_examples() -> Dict[str, float]:
     return {
-        "zero_errors_among_50": binomial_lower_tail(50, 0),
-        "at_most_20_errors_among_200": binomial_lower_tail(200, 20),
+        "zero_errors_among_50": adaptive_sequential_lower_tail_bound(50, 0),
+        "at_most_20_errors_among_200": adaptive_sequential_lower_tail_bound(200, 20),
     }
 
 

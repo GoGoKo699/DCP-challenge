@@ -9,31 +9,31 @@ This repository accompanies the 2022 article:
 
 The original ParitySolve circuit is correct on its selected collision branch, but the original capability-verification interpretation is not.
 
-The quantity denoted by $p_B$ in the article is the success probability of one specified all-Hadamard decoder. It is not a sound upper bound on all strategies using those measurements and classical postprocessing. An exact two-sample counterexample achieves
+The quantity denoted by $p_B$ in the article is the success probability of one specified all-Hadamard decoder. For one all-Hadamard sample, that decoder is in fact Bayes-optimal. The failure begins when several samples reuse the same hidden secret: outcomes that reveal no parity individually can become informative through their correlations.
+
+An exact two-sample counterexample uses the same product measurements and only changes the classical decoder:
 
 $$
-\frac{25}{32}
+ p_B=\frac{23}{32},
+ \qquad
+ p_{\rm better}=\frac{25}{32}.
 $$
 
-using the same product measurements, whereas the published decoder gives
+Therefore, this repository no longer presents $p>p_B$ as verification of quantum-computation capability.
 
-$$
-\frac{23}{32}.
-$$
+**Retained:** the DCP sample construction, the Fourier-label collision mechanism, the selected ParitySolve algebra, and the circuit as a structured hardware-sensitive workload.
 
-Therefore, this repository no longer presents the condition $p>p_B$ as a verification of quantum-computation capability.
+**Withdrawn:** the claim that the published $p_B$ threshold is an adversarially sound capability-verification bound.
 
-**What remains valid:** the DCP sample construction, the Fourier-label collision mechanism, the selected ParitySolve algebra, and the use of the circuit as a structured hardware-sensitive workload.
-
-**What is withdrawn:** the claim that the published $p_B$ threshold supplies an adversarially sound capability-verification test.
-
-The full statement, derivations, corrected Figure 5 values, statistical correction, and IBM aggregate reanalysis are in:
+The complete statement is available in:
 
 - [Author correction in Markdown](correction/AUTHOR_CORRECTION.md)
 - [Author correction in PDF](correction/author_correction.pdf)
 - [Scientific status and claim map](SCIENTIFIC_STATUS.md)
 
 > This is an author-maintained repository correction by Ruge Lin. It is not an APS Erratum, has not been peer reviewed as a replacement article, and does not alter the journal version.
+
+The proof-of-concept IBM experiment is preserved in the historical code but is outside the scope of the present correction.
 
 ## Historical record
 
@@ -43,7 +43,7 @@ The repository state that accompanied the article is preserved unchanged at the 
 paper-2022-original
 ```
 
-The six original root scripts remain byte-for-byte unchanged in the current repository:
+The six original root scripts remain byte-for-byte unchanged:
 
 ```text
 IBM.py
@@ -54,7 +54,7 @@ proba.py
 verification.py
 ```
 
-They are retained for historical reproducibility and should be interpreted according to [ORIGINAL_2022_CODE.md](ORIGINAL_2022_CODE.md).
+They are retained for historical reproducibility and described in [ORIGINAL_2022_CODE.md](ORIGINAL_2022_CODE.md).
 
 ## Corrected results at a glance
 
@@ -64,7 +64,7 @@ They are retained for historical reproducibility and should be interpreted accor
 | 5(b) | $(6,9,4)$ | 0.716371 | 0.817392 | **0.810918** | **0.937289**, Monte Carlo |
 | 5(c) | $(9,21,9)$ | 0.654461 | 0.906606 | **0.904804** | **0.957183**, Monte Carlo |
 
-The exact honest probability is computed from the complementary-pair occupancy formula implemented in `src/dcp_challenge/exact_probabilities.py`.
+The exact honest probability is computed from the complementary-pair occupancy formula in `src/dcp_challenge/exact_probabilities.py`.
 
 ## Reproduce the correction
 
@@ -73,8 +73,10 @@ The corrected analysis does not require Qibo.
 ```bash
 python -m pip install -e .[test]
 python examples/reproduce_counterexample.py
+python examples/reproduce_one_sample_optimality.py
 python examples/reproduce_figure5.py
-python examples/reproduce_ibm_reanalysis.py
+python scripts/verify_historical_files.py
+python scripts/validate_committed_results.py
 pytest -q
 ```
 
@@ -85,19 +87,25 @@ Published special-outcome decoder: 23/32 = 0.718750
 Same measurements, better decoder: 25/32 = 0.781250
 ```
 
-See [REPRODUCIBILITY.md](REPRODUCIBILITY.md) for full commands, fixed seeds, and the distinction between exact and Monte Carlo results.
+See [REPRODUCIBILITY.md](REPRODUCIBILITY.md) for fixed seeds, exact-versus-numerical distinctions, and validation tolerances. The completed checks are summarized in [VALIDATION_RECORD.md](VALIDATION_RECORD.md).
 
-## Separate follow-up: heralded DCP witness
+## Separate follow-up: phase-twirled heralded DCP witness
 
-The directory [witness/](witness/) contains a new phase-twirled, heralded construction. It is **not part of the 2022 article** and is **not a general proof of quantum computation**.
+The directory [witness/](witness/) contains a new 2026 follow-up. It is not part of the 2022 article and is not a general proof of quantum computation.
 
 Its narrow ideal-model claim is:
 
-> Against measurements separable across two trusted DCP input cells, every conclusive answer has conditional error at least $1/4$, while a Bell measurement has zero error and conclusive probability $1/(2N)$.
+> Against adaptive separable instruments across two trusted DCP input cells, every conclusive answer has conditional error at least $1/4$, while a Bell measurement has zero error and conclusive probability $1/(2N)$.
 
-For $N=2$, the complete circuit uses four qubits, at most three CNOT gates, only Clifford operations, and no mid-circuit measurement. The statevector implementation is included and tested.
+This is a DCP-specific maximum-confidence witness of a nonseparable joint measurement. For $N=2$, the complete circuit uses four qubits, at most three CNOT gates, only Clifford operations, and no mid-circuit measurement.
 
-Start with [witness/README.md](witness/README.md).
+The [historical chronology and relation to later work](witness/HISTORICAL_CONTEXT.md) makes the priority boundaries explicit. The 2022 DCP article predates Lee and Bae’s 2026 GLOBAL-versus-SEP maximum-confidence framework as an early trusted-input attempt to test joint inter-cell processing, but it did not prove their sound separation. The sound DCP-specific witness was developed only in the August 2026 reanalysis.
+
+## AI-assisted reanalysis
+
+The August 2026 correction and follow-up were developed with substantial assistance from OpenAI’s **GPT-5.6 Pro**, including literature research, adversarial mathematical checking, numerical validation, code review, and preparation of the reproducible package. Ruge Lin reviewed the resulting claims and accepts responsibility for the repository’s scientific content.
+
+See [AI_ASSISTED_REANALYSIS.md](AI_ASSISTED_REANALYSIS.md) for the full methodology and responsibility statement.
 
 ## Repository map
 
@@ -108,15 +116,17 @@ examples/                    Small one-command reproductions
 tests/                       Exact regression and full-state tests
 results/                     Machine-readable committed outputs
 witness/                     Separate non-peer-reviewed follow-up construction
+AI_ASSISTED_REANALYSIS.md    AI methodology, credit, and responsibility statement
 IBM.py ... verification.py   Original 2022 scripts, unchanged
 ```
 
 ## Machine-readable results
 
 - `results/correction_core_results.json`
+- `results/one_sample_optimality.json`
 - `results/figure5_corrected.csv`
-- `results/ibm_aggregate_reanalysis.json`
 - `results/heralded_witness_results.json`
+- `results/validation_crosschecks.json`
 
 ## Citation
 
@@ -143,4 +153,4 @@ DCP-challenge repository, author-correction-2026, 17 August 2026.
 
 ## License status
 
-No software license has been added in this correction. The absence of a license means that ordinary copyright restrictions apply. This can be changed later by an explicit author decision; it is not part of the scientific correction.
+No software license has been added in this correction. Ordinary copyright restrictions therefore apply unless an explicit license is added later.

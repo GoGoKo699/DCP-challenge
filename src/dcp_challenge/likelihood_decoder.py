@@ -45,6 +45,49 @@ def h_outcome_counts(n: int) -> np.ndarray:
     return counts
 
 
+def one_sample_parity_distributions(
+    n: int,
+) -> Tuple[Tuple[Fraction, ...], Tuple[Fraction, ...]]:
+    """Exact one-sample all-H outcome distributions for even and odd parity.
+
+    Outcomes use the same ordering as :func:`h_outcome_counts`, namely
+    ``o = r*N + y``.  Each distribution averages uniformly over all secrets
+    of the specified parity and over the preparation label ``x``.
+    """
+    if n < 1:
+        raise ValueError("n must be at least 1")
+    N = 1 << n
+    counts = h_outcome_counts(n)
+    denominator = N**3
+    even = tuple(
+        Fraction(2 * int(value), denominator)
+        for value in counts[0::2].sum(axis=0)
+    )
+    odd = tuple(
+        Fraction(2 * int(value), denominator)
+        for value in counts[1::2].sum(axis=0)
+    )
+    return even, odd
+
+
+def one_sample_parity_difference(n: int) -> Tuple[Fraction, ...]:
+    """Return ``P_even(r,y) - P_odd(r,y)`` for one all-H outcome.
+
+    The analytic identity proved in the correction note is
+
+    ``(-1)**r / N`` when ``y == 1`` and zero otherwise.
+    """
+    even, odd = one_sample_parity_distributions(n)
+    return tuple(a - b for a, b in zip(even, odd))
+
+
+def one_sample_optimal_all_h_success(n: int) -> Fraction:
+    """Equal-prior Bayes success from the complete one-sample all-H record."""
+    difference = one_sample_parity_difference(n)
+    total_variation = Fraction(1, 2) * sum(abs(value) for value in difference)
+    return Fraction(1, 2) * (1 + total_variation)
+
+
 def explicit_two_sample_decoder_success() -> Fraction:
     """Exact success of the ``N=4`` decoder used in the correction note.
 

@@ -1,0 +1,212 @@
+[
+  {
+    "N": 2,
+    "difference_support_outcomes_rN_plus_y": [
+      1,
+      3
+    ],
+    "difference_values": [
+      {
+        "decimal": 0.5,
+        "denominator": 2,
+        "numerator": 1
+      },
+      {
+        "decimal": -0.5,
+        "denominator": 2,
+        "numerator": -1
+      }
+    ],
+    "n": 1,
+    "optimal_all_H_success": {
+      "decimal": 0.75,
+      "denominator": 4,
+      "numerator": 3
+    },
+    "special_decoder_success": {
+      "decimal": 0.75,
+      "denominator": 4,
+      "numerator": 3
+    }
+  },
+  {
+    "N": 4,
+    "difference_support_outcomes_rN_plus_y": [
+      1,
+      5
+    ],
+    "difference_values": [
+      {
+        "decimal": 0.25,
+        "denominator": 4,
+        "numerator": 1
+      },
+      {
+        "decimal": -0.25,
+        "denominator": 4,
+        "numerator": -1
+      }
+    ],
+    "n": 2,
+    "optimal_all_H_success": {
+      "decimal": 0.625,
+      "denominator": 8,
+      "numerator": 5
+    },
+    "special_decoder_success": {
+      "decimal": 0.625,
+      "denominator": 8,
+      "numerator": 5
+    }
+  },
+  {
+    "N": 8,
+    "difference_support_outcomes_rN_plus_y": [
+      1,
+      9
+    ],
+    "difference_values": [
+      {
+        "decimal": 0.125,
+        "denominator": 8,
+        "numerator": 1
+      },
+      {
+        "decimal": -0.125,
+        "denominator": 8,
+        "numerator": -1
+      }
+    ],
+    "n": 3,
+    "optimal_all_H_success": {
+      "decimal": 0.5625,
+      "denominator": 16,
+      "numerator": 9
+    },
+    "special_decoder_success": {
+      "decimal": 0.5625,
+      "denominator": 16,
+      "numerator": 9
+    }
+  },
+  {
+    "N": 16,
+    "difference_support_outcomes_rN_plus_y": [
+      1,
+      17
+    ],
+    "difference_values": [
+      {
+        "decimal": 0.0625,
+        "denominator": 16,
+        "numerator": 1
+      },
+      {
+        "decimal": -0.0625,
+        "denominator": 16,
+        "numerator": -1
+      }
+    ],
+    "n": 4,
+    "optimal_all_H_success": {
+      "decimal": 0.53125,
+      "denominator": 32,
+      "numerator": 17
+    },
+    "special_decoder_success": {
+      "decimal": 0.53125,
+      "denominator": 32,
+      "numerator": 17
+    }
+  },
+  {
+    "N": 32,
+    "difference_support_outcomes_rN_plus_y": [
+      1,
+      33
+    ],
+    "difference_values": [
+      {
+        "decimal": 0.03125,
+        "denominator": 32,
+        "numerator": 1
+      },
+      {
+        "decimal": -0.03125,
+        "denominator": 32,
+        "numerator": -1
+      }
+    ],
+    "n": 5,
+    "optimal_all_H_success": {
+      "decimal": 0.515625,
+      "denominator": 64,
+      "numerator": 33
+    },
+    "special_decoder_success": {
+      "decimal": 0.515625,
+      "denominator": 64,
+      "numerator": 33
+    }
+  },
+  {
+    "N": 64,
+    "difference_support_outcomes_rN_plus_y": [
+      1,
+      65
+    ],
+    "difference_values": [
+      {
+        "decimal": 0.015625,
+        "denominator": 64,
+        "numerator": 1
+      },
+      {
+        "decimal": -0.015625,
+        "denominator": 64,
+        "numerator": -1
+      }
+    ],
+    "n": 6,
+    "optimal_all_H_success": {
+      "decimal": 0.5078125,
+      "denominator": 128,
+      "numerator": 65
+    },
+    "special_decoder_success": {
+      "decimal": 0.5078125,
+      "denominator": 128,
+      "numerator": 65
+    }
+  },
+  {
+    "N": 128,
+    "difference_support_outcomes_rN_plus_y": [
+      1,
+      129
+    ],
+    "difference_values": [
+      {
+        "decimal": 0.0078125,
+        "denominator": 128,
+        "numerator": 1
+      },
+      {
+        "decimal": -0.0078125,
+        "denominator": 128,
+        "numerator": -1
+      }
+    ],
+    "n": 7,
+    "optimal_all_H_success": {
+      "decimal": 0.50390625,
+      "denominator": 256,
+      "numerator": 129
+    },
+    "special_decoder_success": {
+      "decimal": 0.50390625,
+      "denominator": 256,
+      "numerator": 129
+    }
+  }
+]

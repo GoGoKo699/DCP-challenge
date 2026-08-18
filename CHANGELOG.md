@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.1.0-author-correction - 2026-08-17
+
+### Referee-level revision
+
+- Removed the new IBM reanalysis and left the proof-of-concept experiment solely in the untouched historical code.
+- Added an exact theorem proving that the published special-outcome decoder is Bayes-optimal for one all-Hadamard sample.
+- Added exact tests of the one-sample parity-distribution identity.
+- Formalized adaptive sequential soundness against separable instruments, including LOCC, with a predeclared stopping rule and no-certificate outcome.
+- Added the 2006-2026 maximum-confidence chronology and a direct comparison with Lee and Bae (2026).
+- Clarified that the 2022 DCP article was an earlier conceptual antecedent but did not contain the later sound GLOBAL-versus-SEP theorem.
+- Added explicit credit for substantial assistance from OpenAI’s GPT-5.6 Pro and retained human responsibility with Ruge Lin.
+- Replaced portable byte-for-byte claims for floating-point diagnostics with exact-versus-tolerance-based validation.
+- Expanded continuous integration to verify historical file hashes and committed scientific results.
+
 ## 1.0.0-author-correction - 2026-08-17
 
 ### Scientific status
@@ -10,7 +24,6 @@
 - Added an exact formula for the honest ParitySolve probability.
 - Corrected the interpretation of the three Figure 5 parameter choices.
 - Replaced the legacy fluctuation expression by the Bernoulli standard error.
-- Added an aggregate-only reanalysis of the IBM counts and documented the missing raw-shot limitation.
 - Reclassified the original construction as a DCP-derived circuit workload rather than a sound capability-verification protocol.
 
 ### Software and reproducibility
@@ -20,7 +33,6 @@
 - Added machine-readable JSON and CSV outputs.
 - Added a standalone Markdown, TeX, and PDF author correction.
 - Left all six original root scripts byte-for-byte unchanged.
-- Standardized Markdown mathematics to GitHub-supported delimiters and added explicit hidden-file upload checks for the CI workflow and `.gitignore`.
 
 ### Separate follow-up
 

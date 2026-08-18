@@ -17,25 +17,29 @@
     "separable_conditional_error_lower_bound": 0.25,
     "separable_confidence_upper_bound": 0.75
   },
+  "adaptive_sequential_examples": {
+    "at_most_20_errors_among_200": 7.0322728954935e-08,
+    "zero_errors_among_50": 5.6632165642694e-07
+  },
   "dense_full_state_N2": {
     "expected_trace_norm_difference": 0.5,
     "forced_guess_helstrom_success": 0.625,
-    "local_marginal_max_error_from_maximally_mixed": 1.1102230246251565e-16,
-    "trace_even": 0.9999999999999996,
-    "trace_norm_difference": 0.49999999999999983,
-    "trace_odd": 0.9999999999999996
+    "local_marginal_max_error_from_maximally_mixed": 0.0,
+    "trace_even": 1.0,
+    "trace_norm_difference": 0.5,
+    "trace_odd": 1.0
   },
   "dense_full_state_N4": {
     "expected_trace_norm_difference": 0.25,
     "forced_guess_helstrom_success": 0.5625,
-    "local_marginal_max_error_from_maximally_mixed": 2.777629766807223e-17,
-    "trace_even": 0.9999999999999999,
-    "trace_norm_difference": 0.2500000000000001,
-    "trace_odd": 0.9999999999999999
+    "local_marginal_max_error_from_maximally_mixed": 0.0,
+    "trace_even": 1.0,
+    "trace_norm_difference": 0.25,
+    "trace_odd": 1.0
   },
   "finite_sample_examples": {
-    "at_most_20_errors_among_200": 7.032272895493487e-08,
-    "zero_errors_among_50": 5.663216564269376e-07
+    "at_most_20_errors_among_200": 7.0322728954935e-08,
+    "zero_errors_among_50": 5.6632165642694e-07
   },
   "minimal_four_qubit_resources": {
     "ancillas": 0,
@@ -48,14 +52,14 @@
     "total_cnots_max": 3
   },
   "random_product_ratio_stress": {
-    "max_ratio_observed": 2.996322648178269,
-    "min_ratio_observed": 0.3340364349689406,
-    "minimum_inequality_margin": 0.0004600919577160689,
+    "max_ratio_observed": 2.9963226481783,
+    "min_ratio_observed": 0.33403643496894,
+    "minimum_inequality_margin": 0.00046009195771612,
     "samples": 20000,
     "seed": 20260817
   },
   "separable_saturating_product_effect_probabilities": [
-    0.3749999999999998,
-    0.12499999999999994
+    0.375,
+    0.125
   ]
 }

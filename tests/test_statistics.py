@@ -1,6 +1,7 @@
 import math
 
 from dcp_challenge.statistics import (
+    adaptive_sequential_lower_tail_bound,
     bernoulli_standard_error,
     binomial_lower_tail,
     legacy_standard_error,
@@ -28,4 +29,17 @@ def test_witness_binomial_examples() -> None:
         binomial_lower_tail(200, 20),
         7.032272895493487e-08,
         rel_tol=1e-12,
+    )
+
+
+
+def test_adaptive_sequential_bound_uses_no_independence_assumption() -> None:
+    assert math.isclose(
+        adaptive_sequential_lower_tail_bound(50, 0),
+        (3.0 / 4.0) ** 50,
+    )
+    assert math.isclose(
+        adaptive_sequential_lower_tail_bound(200, 20),
+        binomial_lower_tail(200, 20),
+        rel_tol=1e-15,
     )

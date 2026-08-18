@@ -1,13 +1,11 @@
 % Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
-\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
 %
 \documentclass[
   10pt,
 ]{article}
 \usepackage{amsmath,amssymb}
-\usepackage{setspace}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
@@ -39,7 +37,7 @@
   \KOMAoptions{parskip=half}}
 \makeatother
 \usepackage{xcolor}
-\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage[a4paper,margin=25mm]{geometry}
 \usepackage{color}
 \usepackage{fancyvrb}
 \newcommand{\VerbBar}{|}
@@ -92,6 +90,7 @@
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{setspace}
 \usepackage{microtype}
 \usepackage{fancyhdr}
 \usepackage{enumitem}
@@ -107,11 +106,12 @@
 \renewcommand{\headrulewidth}{0.3pt}
 \setlength{\headheight}{14pt}
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{0.55em plus 0.12em minus 0.08em}
+\setlength{\parskip}{0.42em plus 0.10em minus 0.06em}
 \setlist{nosep,leftmargin=1.5em}
 \titleformat{\section}{\Large\bfseries\color{DCPBlue}}{}{0pt}{}
 \titleformat{\subsection}{\large\bfseries\color{DCPBlue}}{}{0pt}{}
 \titleformat{\subsubsection}{\normalsize\bfseries\color{DCPBlue}}{}{0pt}{}
+\AtBeginDocument{\setstretch{1.02}}
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
@@ -121,11 +121,7 @@
 \hypersetup{
   pdftitle={Author Technical Correction and Updated Analysis},
   pdfauthor={Ruge Lin},
-  colorlinks=true,
-  linkcolor={DCPBlue},
-  filecolor={Maroon},
-  citecolor={Blue},
-  urlcolor={DCPBlue},
+  hidelinks,
   pdfcreator={LaTeX via pandoc}}
 
 \title{Author Technical Correction and Updated Analysis}
@@ -144,11 +140,9 @@ for NISQ devices with dihedral coset problem'}
 \maketitle
 
 {
-\hypersetup{linkcolor=}
 \setcounter{tocdepth}{2}
 \tableofcontents
 }
-\setstretch{1.04}
 \begin{quote}
 \textbf{Status.} This is an author-maintained technical correction
 hosted with the code repository. It is not an APS Erratum, has not been
@@ -158,11 +152,11 @@ as a statement on behalf of the journal or as an assertion of
 endorsement by the coauthor.
 \end{quote}
 
-\subsection{Abstract}\label{abstract}
+\section{Abstract}\label{abstract}
 
 The 2022 article proposed a DCP-derived circuit, called ParitySolve, and
 interpreted its success probability relative to a quantity denoted by
-\(p_B\) as a verification of quantum-computation capability. A later
+\(p_B\) as verification of quantum-computation capability. A later
 reanalysis shows that the circuit-level parity extraction is correct,
 but the verification interpretation is not. The quantity \(p_B\) is the
 success probability of one specified all-Hadamard decoder; it is neither
@@ -173,16 +167,19 @@ published decoder, without adding any quantum operation. Consequently,
 the acceptance condition \(p>p_B\) does not establish the claimed
 capability.
 
-This note records what survives, supplies an exact formula for the ideal
-ParitySolve probability, corrects the numerical interpretation of the
-parameter choices used in Figure 5, replaces the reported fluctuation
-formula by the Bernoulli standard error, and gives the strongest
-aggregate reconstruction supported by the IBM counts retained in the
-repository. The defensible surviving interpretation is a structured
-DCP-derived circuit workload, not an adversarially sound verification
-protocol.
+The reanalysis also strengthens the fair part of the original baseline:
+for one all-Hadamard sample, the published special-outcome rule is
+Bayes-optimal among all classical decoders of the complete measurement
+record. Its failure begins only when several samples reuse the same
+hidden secret and jointly reveal correlations. This note records what
+survives, proves the one-sample theorem, supplies an exact formula for
+the ideal ParitySolve probability, corrects the Figure 5 parameter
+interpretation, and replaces the reported fluctuation formula by the
+Bernoulli standard error. The defensible surviving classification is a
+structured DCP-derived circuit workload, not an adversarially sound
+verification protocol.
 
-\subsection{1. Scope and bibliographic
+\section{1. Scope and bibliographic
 record}\label{scope-and-bibliographic-record}
 
 This note concerns:
@@ -193,9 +190,8 @@ verification protocol for NISQ devices with dihedral coset problem,''
 \texttt{10.1103/PhysRevA.106.012430}, arXiv:2202.06984.
 
 The original repository state is preserved by the immutable GitHub
-release and tag \texttt{paper-2022-original}. The present repository
-branch adds new files but leaves the six original Python scripts
-unchanged.
+release and tag \texttt{paper-2022-original}. The corrected repository
+adds new files but leaves the six original Python scripts unchanged.
 
 The correction has four purposes:
 
@@ -207,16 +203,17 @@ The correction has four purposes:
 \item
   withdraw the unsound interpretation of \(p_B\);
 \item
-  make the corrected calculations exactly reproducible;
+  replace approximate or unsupported analytical statements by exact
+  reproducible results;
 \item
   separate a later DCP-derived witness from the claims of the 2022
   article.
 \end{enumerate}
 
-Citation history, peer-review history, and the reception of the article
-are outside the scope of this note.
+The four-qubit IBM run was a proof-of-concept experiment. It remains in
+the historical record and is outside the scope of this correction.
 
-\subsection{2. Circuit result that remains
+\section{2. Circuit result that remains
 correct}\label{circuit-result-that-remains-correct}
 
 Let \(N=2^n\), and let a DCP sample be
@@ -269,10 +266,10 @@ readout.
 
 The correction does not withdraw this circuit identity.
 
-\subsection{3. The original baseline and its
+\section{3. The original baseline and its
 limitation}\label{the-original-baseline-and-its-limitation}
 
-\subsubsection{\texorpdfstring{3.1 What \(p_B\) actually
+\subsection{\texorpdfstring{3.1 What \(p_B\) actually
 computes}{3.1 What p\_B actually computes}}\label{what-p_b-actually-computes}
 
 The article considered applying Hadamard gates to every qubit of every
@@ -316,20 +313,117 @@ success probability is
 }.
 \]
 
-This formula is correct for that specific decoder. It should therefore
-be renamed descriptively, for example as the \emph{special-outcome all-H
-decoder probability}.
+This formula is correct for that specific decoder. It should be read as
+the \emph{special-outcome all-H decoder probability}, not as an
+optimized soundness bound.
 
-\subsubsection{3.2 Why the one-sample calculation looked
-convincing}\label{why-the-one-sample-calculation-looked-convincing}
+\subsection{3.2 Exact one-sample optimality
+theorem}\label{exact-one-sample-optimality-theorem}
 
-For a single sample, the special-outcome decoder is optimal for
-discriminating the parity after the all-H product measurement. The
-problem is not the one-sample formula.
+The one-sample baseline is stronger than the original article proved.
+
+Let \(P_b(r,y)\) denote the outcome distribution averaged uniformly over
+secrets of parity \(b\in\{0,1\}\). Then
+
+\[
+\boxed{
+P_0(r,y)-P_1(r,y)
+=
+\frac{(-1)^r}{N}\,\mathbf{1}_{\{y=1\}}.
+}
+\]
+
+Therefore the complete one-sample all-H record contains parity
+information only when \(y=1\). The equal-prior Bayes-optimal success
+probability is
+
+\[
+\boxed{
+\frac12+\frac1{2N},
+}
+\]
+
+which is exactly the success of the published one-sample special-outcome
+decoder.
+
+\subsubsection{Proof}\label{proof}
+
+For fixed \(x\) and \(s\), the all-H outcome probability is
+
+\[
+p(r,y\mid x,s)
+=
+\frac1{2N}
+\left[
+1+(-1)^{r+x\cdot y+((x+s)\bmod N)\cdot y}
+\right].
+\]
+
+Averaging over uniform \(x\) gives \(q_s(r,y)\). Taking the even-parity
+average minus the odd-parity average cancels the constant term and
+yields
+
+\[
+P_0(r,y)-P_1(r,y)
+=
+\frac{(-1)^r}{N^3}
+\sum_{x,s}
+(-1)^{s+x\cdot y+((x+s)\bmod N)\cdot y}.
+\]
+
+Set
+
+\[
+z=(x+s)\bmod N.
+\]
+
+The map \((x,s)\mapsto(x,z)\) is a bijection. Since \(N\) is even,
+
+\[
+s\bmod2=x_0\oplus z_0.
+\]
+
+The sum therefore factorizes:
+
+\[
+P_0(r,y)-P_1(r,y)
+=
+\frac{(-1)^r}{N^3}
+\left(\sum_x(-1)^{x_0+x\cdot y}\right)
+\left(\sum_z(-1)^{z_0+z\cdot y}\right).
+\]
+
+Each Walsh sum equals \(N\) precisely when \(y\) is the
+least-significant-bit vector, identified with the integer \(1\), and
+equals zero otherwise. This proves the displayed identity.
+
+The total-variation distance is consequently
+
+\[
+\operatorname{TV}(P_0,P_1)
+=
+\frac12\sum_{r,y}|P_0(r,y)-P_1(r,y)|
+=
+\frac1N.
+\]
+
+For equal priors, Bayes success is
+
+\[
+\frac12\left(1+\operatorname{TV}(P_0,P_1)\right)
+=
+\frac12+\frac1{2N}.
+\]
+
+The published decoder attains this value by answering when \(y=1\) and
+guessing otherwise. Hence it is optimal for one all-Hadamard outcome.
+\(\square\)
+
+\subsection{3.3 Why several samples are
+different}\label{why-several-samples-are-different}
 
 The problem is that all \(mt\) samples in one repetition share the same
 hidden secret \(s\). The relevant parity-conditioned record is
-consequently a mixture over fixed-secret product distributions,
 
 \[
 \frac2N
@@ -337,17 +431,24 @@ consequently a mixture over fixed-secret product distributions,
 q_s^{\otimes mt},
 \]
 
-rather than the tensor power of a one-sample parity average. Outcomes
-that are inconclusive individually can therefore be correlated through
-the reused secret and become informative when processed together.
+not the tensor power of the one-sample parity average. Outcomes that are
+parity-neutral individually can therefore be correlated through the
+reused secret and become informative when processed together.
 
-\subsubsection{3.3 Exact two-sample
+The original baseline was not unreasonable at the one-sample level. It
+was incomplete at the shared-secret multi-sample level.
+
+\subsection{3.4 Exact two-sample
 counterexample}\label{exact-two-sample-counterexample}
 
 Take
 
 \[
-N=4,\qquad m=2,\qquad t=1.
+N=4,
+\qquad
+m=2,
+\qquad
+t=1.
 \]
 
 Use exactly the same all-H product measurements as the published
@@ -386,10 +487,7 @@ and reveals the parity exactly.
 The additional event \(y_1,y_2\in\{2,3\}\) occurs with probability
 \(1/4\), is disjoint from the first event, and gives conditional success
 \(3/4\): for even \(s\), the XOR is always zero; for odd \(s\), it is
-uniform. With equal parity priors, the decoder is therefore correct with
-probability \(3/4\) on this event.
-
-Hence
+uniform. Hence
 
 \[
 \begin{aligned}
@@ -411,13 +509,12 @@ The improvement is
 \frac{25}{32}-\frac{23}{32}=\frac1{16}.
 \]
 
-No entangling operation, quantum memory, alternative measurement basis,
-additional sample, or quantum postprocessing is used. The difference
-comes solely from retaining correlations discarded by the original
-classical decoder.
+No entangling operation, quantum memory, alternative basis, additional
+sample, or quantum postprocessing is used. The improvement comes solely
+from retaining correlations discarded by the original classical decoder.
 
-This counterexample disproves the interpretation of \(p_B\) as a general
-upper bound for the intended weaker class. Therefore the implication
+This disproves the interpretation of \(p_B\) as a general upper bound
+for the intended weaker class. Therefore
 
 \[
 p>p_B
@@ -427,10 +524,9 @@ p>p_B
 
 is withdrawn.
 
-\subsubsection{3.4 Full likelihood
-decoder}\label{full-likelihood-decoder}
+\subsection{3.5 Full likelihood decoder}\label{full-likelihood-decoder}
 
-For any fixed all-H record \(o_1,\ldots,o_\ell\), with \(\ell=mt\), the
+For an all-H record \(o_1,\ldots,o_\ell\), with \(\ell=mt\), the
 Bayes-optimal parity likelihoods are
 
 \[
@@ -442,12 +538,12 @@ L_b(o_1,\ldots,o_\ell)
 \qquad b\in\{0,1\}.
 \]
 
-Returning the larger likelihood systematically uses all information in
-the original measurement record. The repository implements this decoder
-exactly for small cases and by fixed-seed Monte Carlo for the larger
-published instances.
+Returning the larger likelihood uses all information in the original
+measurement record. The repository implements this decoder exactly for
+small cases and by fixed-seed Monte Carlo for the larger published
+instances.
 
-\subsection{4. Exact ideal ParitySolve
+\section{4. Exact ideal ParitySolve
 probability}\label{exact-ideal-paritysolve-probability}
 
 The original analysis used upper and lower bounds for the probability of
@@ -516,13 +612,13 @@ p_{\rm exact}
 The repository checks the formula against exhaustive enumeration for all
 test instances with \(n\le3\) and \(m\le4\).
 
-\subsection{5. Corrected interpretation of the Figure 5 parameter
-choices}\label{corrected-interpretation-of-the-figure-5-parameter-choices}
+\section{5. Corrected interpretation of Figure
+5}\label{corrected-interpretation-of-figure-5}
 
 The original parameter search selected instances from the difference
 between the published upper bound \(p_{\rm upper}\) and \(p_B\). That is
 a legitimate bound comparison, but it does not establish the actual
-honest separation. The corrected values are:
+honest separation.
 
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1304}}
@@ -570,9 +666,9 @@ For Figure 5(b), the actual difference is
 \]
 
 which is below 10 percent. Figure 5(c) retains an honest difference of
-approximately 25.03 percent against the special-outcome decoder, but the
-optimized decoder using the same all-H measurement data exceeds the
-honest ParitySolve score. None of these comparisons supplies a sound
+approximately 25.03 percent against the special decoder, but the
+optimized decoder using the same all-H data exceeds the honest
+ParitySolve score. None of these comparisons supplies a sound
 verification gap.
 
 The Figure 5(a) optimized value is exact:
@@ -586,7 +682,7 @@ The Figure 5(b) and 5(c) values are fixed-seed Monte Carlo estimates
 with Wilson intervals recorded in
 \texttt{results/figure5\_corrected.csv}.
 
-\subsection{6. Corrected statistical
+\section{6. Corrected statistical
 uncertainty}\label{corrected-statistical-uncertainty}
 
 Each complete repetition returns one correct-or-incorrect bit. Let \(Y\)
@@ -597,8 +693,8 @@ into definitive branches and random guesses,
 Y\sim\operatorname{Bernoulli}(p).
 \]
 
-For \(r\) independent repetitions, the empirical accuracy therefore has
-standard error
+For \(r\) independent repetitions, the empirical accuracy has standard
+error
 
 \[
 \boxed{
@@ -627,81 +723,41 @@ At the exact Figure 5(b) value with \(r=1000\), the two formulas give
 
 respectively.
 
-\subsection{7. IBM aggregate
-reconstruction}\label{ibm-aggregate-reconstruction}
+\section{7. Effect on the conclusions}\label{effect-on-the-conclusions}
 
-The article describes a postselection condition based on measured output
-bits. In the original \texttt{IBM.py}, the prepared values \texttt{x0}
-and \texttt{x1} are also used as the collision test through
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\ControlFlowTok{if}\NormalTok{ x0 }\OperatorTok{!=}\NormalTok{ x1:}
-\end{Highlighting}
-\end{Shaded}
-
-The preparation labels are not the measured Fourier labels. This legacy
-reconstruction consequently uses only cases B, C, F, and G in the
-definitive branch, although all eight preparation cases contain selected
-hardware counts. It also substitutes an idealized selection probability
-for the observed selection rate.
-
-Using all eight archived aggregate cases and their observed
-selected-count rates gives
-
-\[
-p_{\rm IBM,aggregate}=0.7439808125.
-\]
-
-For comparison,
-
-\[
-p_{\rm legacy\ code}=0.7545878022,
-\qquad
-p_{\rm ideal}=0.7890625.
-\]
-
-A 100,000-trial multinomial bootstrap of the three retained aggregate
-categories gives the indicative 95 percent interval
-
-\[
-[0.739820,\,0.748090].
-\]
-
-This interval measures finite-count uncertainty only. The repository
-does not contain the raw shot records or timestamps, so temporal drift
-and shot-level correlations cannot be reconstructed.
-
-The defensible interpretation is that the archived data show nontrivial
-fidelity in the selected Bell-type branch. They do not constitute a
-direct end-to-end execution of the challenge, and Figure 9 should not be
-regenerated from the legacy reconstruction logic as though it did.
-
-\subsection{8. Effect on the
-conclusions}\label{effect-on-the-conclusions}
-
-\subsubsection{Retained}\label{retained}
+\subsection{Retained}\label{retained}
 
 \begin{itemize}
 \tightlist
 \item
-  the DCP sample construction;
+  DCP sample construction;
 \item
-  the post-Fourier reflection phase state;
+  post-Fourier reflection phase state;
 \item
-  the complementary-label collision mechanism;
+  complementary-label collision mechanism;
 \item
-  the selected ParitySolve branch and its exact parity output;
+  selected ParitySolve branch and exact parity output;
 \item
-  the original collision expressions as upper and lower bounds;
+  published collision expressions as upper and lower bounds;
 \item
-  the use of the circuit as a structured, hardware-sensitive workload;
+  circuit as a structured hardware-sensitive workload;
 \item
-  the original clean/noisy simulations as illustrations of the specified
-  circuit and noise model.
+  original clean/noisy simulations as illustrations of their specified
+  models.
 \end{itemize}
 
-\subsubsection{Corrected or withdrawn}\label{corrected-or-withdrawn}
+\subsection{Strengthened}\label{strengthened}
+
+\begin{itemize}
+\tightlist
+\item
+  the special all-H outcome has probability \(1/N\) for every \(n\);
+\item
+  the associated decoder is Bayes-optimal for one complete all-H
+  measurement record.
+\end{itemize}
+
+\subsection{Corrected or withdrawn}\label{corrected-or-withdrawn}
 
 \begin{itemize}
 \tightlist
@@ -713,16 +769,13 @@ conclusions}\label{effect-on-the-conclusions}
   the statement that no analytic ideal probability is available is
   replaced by the exact formula above;
 \item
-  Figure 5 parameter gaps must be interpreted using the exact honest
-  probability, not only an upper bound;
+  Figure 5 parameter gaps must use exact honest probability rather than
+  only an upper bound;
 \item
-  the standard-error formula is replaced by the Bernoulli formula;
-\item
-  the IBM reconstruction is replaced by the aggregate-only calculation
-  above.
+  the standard-error formula is replaced by the Bernoulli formula.
 \end{itemize}
 
-\subsubsection{Surviving scientific
+\subsection{Surviving scientific
 classification}\label{surviving-scientific-classification}
 
 The original construction is best classified as a \textbf{DCP-derived
@@ -731,20 +784,47 @@ capability-verification protocol would require an explicit null class
 and a proved optimal soundness bound against that entire class. The 2022
 threshold does not provide such a bound.
 
-\subsection{9. Separate follow-up
-result}\label{separate-follow-up-result}
+\section{8. Separate 2026 follow-up}\label{separate-2026-follow-up}
 
 The repository also contains a later phase-twirled, heralded DCP
 construction under \texttt{witness/}. It is not a repair already present
 in the 2022 article. Its ideal theorem concerns a narrower capability: a
-nonseparable joint measurement across two trusted DCP input cells,
-against POVMs whose effects are separable across the cell partition.
+nonseparable joint measurement across two trusted DCP cells, against
+adaptive separable instruments across the cell partition.
 
-That follow-up is explicitly labelled non-peer-reviewed and is separated
-from this correction. It does not restore the original claim of general
-quantum-computation verification.
+The follow-up is a DCP-specific maximum-confidence witness. It has an
+ideal confidence gap of \(1\) versus at most \(3/4\), a sequential
+finite-sample theorem, and a four-qubit Clifford implementation for
+\(N=2\).
 
-\subsection{10. Reproducibility}\label{reproducibility}
+The 2022 article predates Lee and Bae's June 2026 explicit
+GLOBAL-versus-SEP maximum-confidence framework as an earlier
+trusted-input attempt to test joint processing, but it did not contain
+their sound theorem. The historical relationship and priority boundary
+are documented in \texttt{witness/HISTORICAL\_CONTEXT.md}.
+
+\section{9. AI-assisted research and
+responsibility}\label{ai-assisted-research-and-responsibility}
+
+This August 2026 correction and follow-up analysis were developed with
+substantial assistance from OpenAI's GPT-5.6 Pro. The model was used for
+literature discovery, adversarial mathematical checking, derivations,
+numerical-test design, code generation and review, notation consistency,
+and technical-document preparation.
+
+The AI-assisted reanalysis helped identify the multi-sample failure of
+\(p_B\), prove the one-sample optimality statement, derive and verify
+exact probability formulas, formulate the phase-twirled witness, and
+recognize its relationship to later maximum-confidence certification
+work.
+
+GPT-5.6 Pro is not an author and cannot assume responsibility for the
+work. Ruge Lin reviewed the arguments, selected the claims included in
+the repository, and accepts responsibility for their accuracy. The
+executable tests, source code, machine-readable results, and stated
+limitations are provided for independent checking.
+
+\section{10. Reproducibility}\label{reproducibility}
 
 The decisive calculations can be reproduced from a modern Python
 environment without Qibo:
@@ -753,8 +833,10 @@ environment without Qibo:
 \begin{Highlighting}[]
 \ExtensionTok{python} \AttributeTok{{-}m}\NormalTok{ pip install }\AttributeTok{{-}e}\NormalTok{ .}\PreprocessorTok{[}\SpecialStringTok{test}\PreprocessorTok{]}
 \ExtensionTok{python}\NormalTok{ examples/reproduce\_counterexample.py}
+\ExtensionTok{python}\NormalTok{ examples/reproduce\_one\_sample\_optimality.py}
 \ExtensionTok{python}\NormalTok{ examples/reproduce\_figure5.py}
-\ExtensionTok{python}\NormalTok{ examples/reproduce\_ibm\_reanalysis.py}
+\ExtensionTok{python}\NormalTok{ scripts/verify\_historical\_files.py}
+\ExtensionTok{python}\NormalTok{ scripts/validate\_committed\_results.py}
 \ExtensionTok{pytest} \AttributeTok{{-}q}
 \end{Highlighting}
 \end{Shaded}
@@ -766,17 +848,24 @@ The committed machine-readable outputs are:
 \item
   \texttt{results/correction\_core\_results.json};
 \item
+  \texttt{results/one\_sample\_optimality.json};
+\item
   \texttt{results/figure5\_corrected.csv};
 \item
-  \texttt{results/ibm\_aggregate\_reanalysis.json};
+  \texttt{results/heralded\_witness\_results.json};
 \item
-  \texttt{results/heralded\_witness\_results.json}.
+  \texttt{results/validation\_crosschecks.json}.
 \end{itemize}
+
+Exact rational, integer, and combinatorial quantities are validated
+exactly. Floating-point linear-algebra diagnostics are validated within
+the numerical tolerances encoded by the tests; portable byte-identical
+floating-point output is not claimed.
 
 The six original scripts remain unchanged. They require their historical
 software stack and are not imported by the corrected tests.
 
-\subsection{Appendix A. Exact outcome table for the smallest
+\section{Appendix A. Exact outcome table for the smallest
 counterexample}\label{appendix-a.-exact-outcome-table-for-the-smallest-counterexample}
 
 For \(N=4\), the integer counts \(16q_s(r,y)\), with columns ordered by
@@ -792,13 +881,11 @@ s&0,0&0,1&0,2&0,3&1,0&1,1&1,2&1,3\\\hline
 \end{array}
 \]
 
-This table makes both parts of the improved decoder transparent. The
-\(y=1\) columns reveal the parity exactly. Conditional on
+The \(y=1\) columns reveal parity exactly. Conditional on
 \(y\in\{2,3\}\), even secrets force a fixed reflection result while odd
-secrets produce an unbiased result, which creates the two-sample
-correlation.
+secrets produce an unbiased result, creating the two-sample correlation.
 
-\subsection{Appendix B. Repository
+\section{Appendix B. Repository
 status}\label{appendix-b.-repository-status}
 
 \begin{itemize}
@@ -814,6 +901,9 @@ status}\label{appendix-b.-repository-status}
   Current note: author-maintained, not an APS Erratum.
 \item
   Follow-up witness: separate, ideal-model, non-peer-reviewed.
+\item
+  AI assistance: explicitly disclosed, with responsibility retained by
+  Ruge Lin.
 \end{itemize}
 
 \end{document}

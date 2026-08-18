@@ -1,12 +1,12 @@
 # Reproducibility Guide
 
-## 1. Modern corrected analysis
+## 1. Environment
 
-Recommended environment:
+Recommended:
 
 - Python 3.10 or later;
 - NumPy 1.24 or later;
-- pytest 8 or later for tests.
+- pytest 8 for tests.
 
 Install from the repository root:
 
@@ -14,15 +14,21 @@ Install from the repository root:
 python -m pip install -e .[test]
 ```
 
-Run all tests:
+Run the complete test suite:
 
 ```bash
 pytest -q
 ```
 
-The release package was audited with 20 passing tests.
+## 2. Historical integrity
 
-## 2. Decisive exact counterexample
+Verify that the six original root scripts are unchanged from their historical Git blobs:
+
+```bash
+python scripts/verify_historical_files.py
+```
+
+## 3. Decisive exact counterexample
 
 ```bash
 python examples/reproduce_counterexample.py
@@ -35,9 +41,34 @@ Expected values:
 25/32 = 0.781250
 ```
 
-Both values are computed as exact rational numbers.
+Both are exact rational calculations.
 
-## 3. Exact honest probability and Figure 5
+## 4. One-sample optimality theorem
+
+The test suite checks, for $n=1,\ldots,7$, the exact identity
+
+$$
+P_0(r,y)-P_1(r,y)
+=
+\frac{(-1)^r}{N}\,\mathbf 1_{\{y=1\}},
+$$
+
+and therefore the Bayes-optimal one-sample all-H success
+
+$$
+\frac12+\frac1{2N}.
+$$
+
+Run:
+
+```bash
+python examples/reproduce_one_sample_optimality.py
+pytest -q tests/test_likelihood_decoder.py
+```
+
+The committed exact records are in `results/one_sample_optimality.json`.
+
+## 5. Exact honest probability and Figure 5
 
 ```bash
 python examples/reproduce_figure5.py
@@ -48,12 +79,12 @@ The no-complementary-collision probability is
 $$
 k_{\rm nc}(N,m)
 =
-N^{-m}
-\sum_j
-\binom{N/2}{j}2^j j!\,{m\brace j}.
+\frac1{N^m}
+\sum_{j=1}^{\min(m,N/2)}
+\binom{N/2}{j}2^j j!\,{m\brace j},
 $$
 
-The ideal success probability is
+and the exact honest success probability is
 
 $$
 p_{\rm exact}
@@ -61,76 +92,49 @@ p_{\rm exact}
 1-\frac12\left(\frac{1+k_{\rm nc}}2\right)^t.
 $$
 
-The Figure 5(a) complete all-H likelihood result is exact. Figure 5(b) and Figure 5(c) use the frozen fixed-seed Monte Carlo outputs listed below.
+Figure 5(a) has an exact full-likelihood all-H value. Figure 5(b) and 5(c) use frozen fixed-seed Monte Carlo records with Wilson intervals in `results/figure5_corrected.csv`; independent-seed checks are in `results/validation_crosschecks.json`.
 
-| Figure | Trials | Seed | Estimate | Wilson 95% interval |
-|---|---:|---:|---:|---:|
-| 5(b) | 1,000,000 | 20260817 | 0.937289 | [0.936812, 0.937763] |
-| 5(c) | 60,000 | 20260818 | 0.957183 | [0.955534, 0.958774] |
+## 6. Heralded witness
 
-The default `scripts/generate_results.py` reuses these frozen values rather than rerunning a long Monte Carlo job. Its source identifies them explicitly. To independently rerun the large simulations, call `build_figure5_rows(run_large_monte_carlo=True)` from that script or use `h_likelihood_monte_carlo` directly.
-
-## 4. IBM aggregate reconstruction
+Run the exact and dense-matrix checks:
 
 ```bash
-python examples/reproduce_ibm_reanalysis.py
-```
-
-The finite-count bootstrap committed in `results/ibm_aggregate_reanalysis.json` uses:
-
-```text
-trials = 100000
-seed   = 20260817
-```
-
-It is a multinomial bootstrap of the three aggregate categories retained in `IBM.py`. It cannot recover shot order, timestamps, drift, or correlations absent from the archive.
-
-## 5. Heralded witness
-
-```bash
-python examples/minimal_heralded_witness.py
-python examples/simulate_minimal_four_qubit_circuit.py
 pytest -q tests/test_heralded_witness.py
+python examples/simulate_minimal_four_qubit_circuit.py
 ```
 
-The random product-effect stress test committed in the results file uses:
+The tests cover:
 
-```text
-samples = 20000
-seed    = 20260817
+- collision-state normalization and positivity;
+- the tight separable likelihood ratio $3$;
+- complete two-cell ensembles for $N=2,4$;
+- maximally mixed one-cell marginals;
+- trace-norm and forced-guess values;
+- finite-sample sequential bounds;
+- the complete minimal four-qubit statevector circuit.
+
+## 7. Validate committed result files
+
+```bash
+python scripts/validate_committed_results.py
 ```
 
-The analytical separable bound, not the random search, is the proof.
+Validation policy:
 
-## 6. Regenerate machine-readable files
+- exact rational, integer, and combinatorial quantities are compared exactly;
+- fixed Monte Carlo records include seeds, trial counts, estimates, and Wilson intervals;
+- floating-point linear-algebra diagnostics are compared within the numerical tolerances encoded by the tests;
+- byte-identical portability of floating-point JSON across all numerical libraries and processors is not claimed.
+
+To regenerate the quick committed outputs:
 
 ```bash
 python scripts/generate_results.py
 ```
 
-This rewrites:
+## 8. Historical software
 
-- `results/correction_core_results.json`;
-- `results/figure5_corrected.csv`;
-- `results/ibm_aggregate_reanalysis.json`;
-- `results/heralded_witness_results.json`.
+The original scripts require their 2022 Qibo environment and are not imported by the corrected test suite. `requirements-legacy.txt` records the historical dependency request. The proof-of-concept IBM experiment is preserved but is outside the present correction.
 
-## 7. Correction PDF
 
-The compiled PDF is committed at:
-
-```text
-correction/author_correction.pdf
-```
-
-Its standalone LaTeX source is:
-
-```text
-correction/author_correction.tex
-```
-
-A standard XeLaTeX or `latexmk -xelatex` installation can rebuild it.
-
-## 8. Integrity
-
-`CHECKSUMS.sha256` records SHA-256 checksums of the deliverable files. The original six Python files can additionally be checked against the Git blob hashes in `ORIGINAL_2022_CODE.md`.
+The completed repository-level checks are summarized in [VALIDATION_RECORD.md](VALIDATION_RECORD.md).
