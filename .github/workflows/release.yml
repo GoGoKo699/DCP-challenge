@@ -1,0 +1,122 @@
+name: reviewed-release
+
+on:
+  push:
+    branches: [main]
+    paths: ["release/RELEASE_NOTES.md"]
+  pull_request:
+    paths:
+      - "docs/**"
+      - "release/**"
+      - "audit/**"
+      - "scripts/build_current_note.py"
+      - "scripts/package_release.py"
+      - ".github/workflows/release.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: reviewed-release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build-and-verify:
+    runs-on: ubuntu-latest
+    env:
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Install validation and document tools
+        run: |
+          python -m pip install -e '.[test,audit]'
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq pandoc texlive-xetex texlive-latex-extra texlive-fonts-recommended poppler-utils
+      - name: Run the complete release validation
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p build/release-assets
+          {
+            python scripts/verify_checksums.py
+            python -m pytest -q
+            python scripts/verify_historical_files.py
+            python scripts/validate_committed_results.py
+            python scripts/audit_scientific_frontier.py
+            python scripts/audit_release_science.py
+          } 2>&1 | tee build/release-assets/VALIDATION.txt
+          {
+            python --version
+            python -m pip freeze
+            pandoc --version | head -n 2
+            xelatex --version | head -n 2
+          } > build/release-assets/ENVIRONMENT.txt
+      - name: Build and preflight the current note
+        run: |
+          python scripts/build_current_note.py
+          pdfinfo build/current-note/DCP-current-technical-note.pdf
+          pdftotext build/current-note/DCP-current-technical-note.pdf build/current-note/extracted.txt
+          grep -q 'Corrected Analysis and Measurement Witness' build/current-note/extracted.txt
+      - name: Assemble exact source and document assets
+        run: |
+          python scripts/package_release.py
+          cd build/release-assets
+          sha256sum --check SHA256SUMS
+      - name: Confirm tracked files are unchanged
+        run: git diff --exit-code HEAD
+      - uses: actions/upload-artifact@v4
+        with:
+          name: reviewed-release-assets
+          path: build/release-assets/*
+          if-no-files-found: error
+          retention-days: 30
+
+  publish:
+    needs: build-and-verify
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && github.repository == 'GoGoKo699/DCP-challenge'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      TAG: v1.2.1
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: reviewed-release-assets
+          path: assets
+      - name: Verify downloaded assets and target commit
+        run: |
+          cd assets
+          sha256sum --check SHA256SUMS
+          test "$(cat RELEASE_COMMIT.txt)" = "$GITHUB_SHA"
+      - name: Create a draft, verify uploaded bytes, then publish
+        shell: bash
+        run: |
+          set -euo pipefail
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            echo 'This release already exists; refusing to overwrite it.' >&2
+            exit 1
+          fi
+          gh release create "$TAG" assets/* --draft --target "$GITHUB_SHA" --title 'DCP Challenge 1.2.1: reviewed correction and current technical note' --notes-file release/RELEASE_NOTES.md
+          mkdir downloaded
+          gh release download "$TAG" --dir downloaded
+          for f in assets/*; do cmp "$f" "downloaded/$(basename "$f")"; done
+          gh release edit "$TAG" --draft=false --latest
+          gh api "repos/$GH_REPO/releases/tags/$TAG" > published-release.json
+          python - <<'PY'
+          import json
+          r=json.load(open('published-release.json'))
+          if r['draft'] or r.get('prerelease') or r.get('immutable') is not True:
+              raise SystemExit('Release published but immutability was not confirmed; inspect before claiming an immutable archive.')
+          print(r['html_url'])
+          print('Published immutable release; every uploaded asset matched the verified build.')
+          PY

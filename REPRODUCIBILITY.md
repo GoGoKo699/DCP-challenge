@@ -211,3 +211,11 @@ The completed repository-level checks are summarized in [VALIDATION_RECORD.md](V
 For an independent optimization check, install the optional audit dependency with `python -m pip install -e '.[audit]'` and run `python scripts/audit_scientific_frontier.py`. Its 96 GLOBAL/PPT linear programs start from explicit raw source states. The runtime package still needs only NumPy. Mathematical proofs, rather than numerical optimizer output, establish the general claims.
 
 The August correction PDF remains a dated record. September's revised conclusions are stated in `correction/SCIENTIFIC_REVISION_2026_09.md`; they are not backdated into that PDF.
+
+## Current technical note and release audit
+
+`python scripts/audit_release_science.py` runs the independently implemented complete-space and stopping checks. It imports no production analytical functions.
+
+Build `docs/CURRENT_TECHNICAL_NOTE.md` with `python scripts/build_current_note.py` after installing Pandoc and XeLaTeX. The PDF and standalone TeX are written to ignored `build/current-note/`, not over the dated August PDF. The release attaches the generated documents separately from the exact tracked-source ZIP. PDF bytes may depend on the typesetting environment; the release asset checksums identify the particular archived build.
+
+The reviewed-release workflow runs all tests, both scientific audits, checksum and historical-file verification, and the current note build before attaching assets to a draft. It downloads and compares the uploaded bytes before publication. A published release is never overwritten.

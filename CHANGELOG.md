@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.2.1 - 2026-09-07
+
+- Completed the focused scientific release review; no v1.2.0 theorem, numerical result, or null threshold required alteration.
+- Added one self-contained current technical note with reproducible PDF/TeX build, preserving the dated August correction.
+- Added full-space PPT certificates, raw tensor-power optima, exact adaptive-stopping optimization, and conditional moment-bound checks to the release audit.
+- Added a draft-first release workflow that validates the source, verifies uploaded asset bytes, and confirms immutability after publication.
+
+
 ## 1.2.0-scientific-revision - 2026-09-07
 
 - Strengthened one-sample optimality to all quantum POVMs and proved the refreshed-secret no-separation result.

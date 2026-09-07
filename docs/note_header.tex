@@ -1,0 +1,21 @@
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{needspace}
+\usepackage{etoolbox}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\small DCP Challenge}
+\rhead{\small Current Technical Note}
+\cfoot{\small\thepage}
+\setlength{\headheight}{14pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em plus 0.1em minus 0.08em}
+\setlist{nosep,leftmargin=1.5em}
+\pretocmd{\section}{\needspace{10\baselineskip}}{}{}
+\pretocmd{\subsection}{\needspace{6\baselineskip}}{}{}
+\let\originaltableofcontents\tableofcontents
+\renewcommand{\tableofcontents}{\originaltableofcontents\clearpage}
+\emergencystretch=2em
+\widowpenalty=10000
+\clubpenalty=10000
+\BeforeBeginEnvironment{longtable}{\needspace{12\baselineskip}}

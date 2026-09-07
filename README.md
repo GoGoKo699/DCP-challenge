@@ -27,9 +27,13 @@ Therefore, this repository no longer presents $p>p_B$ as verification of quantum
 
 The complete statement is available in:
 
+- [Current self-contained technical note](docs/CURRENT_TECHNICAL_NOTE.md)
+- [Current technical note in PDF (v1.2.1 release)](https://github.com/GoGoKo699/DCP-challenge/releases/download/v1.2.1/DCP-current-technical-note.pdf)
+- [Scientific release review](audit/RELEASE_REVIEW.md)
+
 - [September scientific revision and proofs](correction/SCIENTIFIC_REVISION_2026_09.md)
 - [Dated August author correction in Markdown](correction/AUTHOR_CORRECTION.md)
-- [Author correction in PDF](correction/author_correction.pdf)
+- [Dated August correction in PDF](correction/author_correction.pdf)
 - [Scientific status and claim map](SCIENTIFIC_STATUS.md)
 
 > This is an author-maintained repository correction by Ruge Lin. It is not an APS Erratum, has not been peer reviewed as a replacement article, and does not alter the journal version.
