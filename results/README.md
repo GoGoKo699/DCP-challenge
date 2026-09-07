@@ -9,3 +9,6 @@
 Files are generated or validated by `scripts/generate_results.py` and `scripts/validate_committed_results.py`.
 
 Exact rational, integer, and combinatorial quantities reproduce exactly. Floating-point linear-algebra diagnostics are validated within declared test tolerances; byte-identical portability across all platforms is not claimed.
+
+
+`scientific_revision_results.json` records the separately dated September scientific extension: global single-sample optima, independently refreshed-secret optima, exact ideal/calibrated-phase confidence frontiers, and an explicitly illustrative source-error-aware fixed-round example. All rational values have numerator and denominator records. No hardware measurements are included.

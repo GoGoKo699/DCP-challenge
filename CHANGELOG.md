@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.2.0-scientific-revision - 2026-09-07
+
+- Strengthened one-sample optimality to all quantum POVMs and proved the refreshed-secret no-separation result.
+- Solved the complete GLOBAL/SEP/PPT/LOCC total-answer-rate frontier for the ideal and specified calibrated phase-noise sources.
+- Added exact decomposable PPT certificates and explicit attaining measurements; clarified the adverse dimension/rate scaling.
+- Separated common local-noise invariance from unrestricted preparation leakage, with a source-error allowance and fixed-round concentration theorem.
+- Made sequential filtrations and separable-instrument definitions explicit.
+- Added direct raw-state checks, independent linear programs, and every-field validation for the new exact results.
+- Preserved the dated August correction PDF/text, all earlier scientific result files, and six original scripts.
+- Corrected the journal locator of the noisy-input reference to PRA 104, 012429 (2021).
+
 ## 1.1.1-author-correction - 2026-09-07
 
 - Replaced overflow-prone binomial evaluation with scaled recurrence and log-tail APIs; positive underflow raises explicitly.

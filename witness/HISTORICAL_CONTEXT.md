@@ -79,3 +79,8 @@ The strongest defensible summary is:
 > The 2022 DCP challenge appears to be an early DCP-specific trusted-input proposal for testing joint quantum processing on near-term hardware. It did not establish a sound global-versus-separable measurement separation. Independent maximum-confidence work, culminating in Lee and Bae’s 2026 framework, supplied the correct general perspective. The August 2026 author reanalysis then produced a sound DCP-specific realization using phase twirling, abstention, fresh rounds, and a proved separable-confidence bound.
 
 No novelty is claimed for the general maximum-confidence certification principle. The possible novelty is limited to the exact DCP-specific construction, proof, and four-qubit embedding; no formal novelty determination has been made.
+
+
+## 7 September 2026: further scientific revision
+
+A later AI-assisted reanalysis strengthened one-sample optimality to arbitrary quantum POVMs, proved the refreshed-secret no-separation result, derived exact fixed-total-answer-rate GLOBAL/SEP/PPT/LOCC frontiers, and separated common local noise from unrestricted source leakage. It also supplied a calibrated-source-error fixed-round test. These statements are dated September and are not claimed as results of the 2022 article or the August note. See [the new proofs](../correction/SCIENTIFIC_REVISION_2026_09.md). General fixed-inconclusive-rate discrimination already had a substantial 2012 literature, which is credited separately from this DCP-specific calculation.

@@ -31,6 +31,7 @@ from dcp_challenge.likelihood_decoder import (
     one_sample_optimal_all_h_success,
     one_sample_parity_difference,
 )
+from dcp_challenge.scientific_revision import revision_reference_results
 from dcp_challenge.statistics import (
     adaptive_sequential_lower_tail_bound,
     bernoulli_standard_error,
@@ -199,6 +200,7 @@ def build_results(run_large_monte_carlo: bool = False) -> dict[str, Any]:
         "heralded_witness_results.json": witness,
         "figure5_corrected.csv": figure_rows,
         "validation_crosschecks.json": archived_crosschecks(),
+        "scientific_revision_results.json": revision_reference_results(),
     }
 
 

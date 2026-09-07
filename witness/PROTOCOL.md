@@ -1,5 +1,7 @@
 # Protocol Specification
 
+**Source assumptions matter.** The conclusive-count test below applies to the ideal source and common secret-independent separable source channels. For unrestricted calibrated preparation errors, use the [adjusted fixed-total-round score test](../correction/SCIENTIFIC_REVISION_2026_09.md), not the unmodified one-quarter-error binomial rule. The same revision gives the exact population confidence-versus-answer-rate frontier.
+
 Let $N=2^n$. Each round uses fresh independent randomness.
 
 ## Trusted preparation

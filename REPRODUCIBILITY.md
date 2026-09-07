@@ -120,7 +120,7 @@ python scripts/validate_committed_results.py
 python scripts/verify_checksums.py
 ```
 
-The result validator checks all five JSON/CSV records, every field, duplicate
+The result validator checks all six JSON/CSV records, every field, duplicate
 representations in the core JSON, schemas, and finite-number requirements.
 It recomputes exact counterexamples, one-sample records, all Figure 5 analytical
 probabilities, the exact Figure 5(a) likelihood result, witness summaries,
@@ -138,7 +138,7 @@ runs under `python -O`.
 Figure 5(b) or the 60,000-trial Figure 5(c) experiment. It checks archived success
 counts, seeds, trial counts, estimates, and recomputed Wilson intervals, including
 the independent-seed cross-check records. These are archived evidence, not fresh
-simulation results. Deliberate-corruption tests alter each of the 458 result
+simulation results. Deliberate-corruption tests alter each of the 1268 result
 fields and require rejection, including changes made to duplicate records together.
 
 The checksum verifier additionally checks all tracked file bytes and complete
@@ -200,3 +200,14 @@ The original scripts require their 2022 Qibo environment and are not imported by
 
 
 The completed repository-level checks are summarized in [VALIDATION_RECORD.md](VALIDATION_RECORD.md).
+
+
+## September scientific revision
+
+`python examples/reproduce_scientific_revision.py` prints the unrestricted one-sample optimum, refreshed-secret limitation, exact confidence-rate values, and a fixed-round source-error example. `python -m pytest -q tests/test_scientific_revision.py` independently constructs raw states, verifies operator certificates, and checks explicit measurements attaining the frontier.
+
+`results/scientific_revision_results.json` is recomputed without reading its stored contents and participates in every-field mutation validation. The earlier five result files are unchanged.
+
+For an independent optimization check, install the optional audit dependency with `python -m pip install -e '.[audit]'` and run `python scripts/audit_scientific_frontier.py`. Its 96 GLOBAL/PPT linear programs start from explicit raw source states. The runtime package still needs only NumPy. Mathematical proofs, rather than numerical optimizer output, establish the general claims.
+
+The August correction PDF remains a dated record. September's revised conclusions are stated in `correction/SCIENTIFIC_REVISION_2026_09.md`; they are not backdated into that PDF.

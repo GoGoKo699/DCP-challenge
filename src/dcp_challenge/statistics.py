@@ -138,7 +138,8 @@ def adaptive_sequential_lower_tail_bound(
     """Evaluate the adaptive bound under the sequential null in witness/PROOF.md.
 
     This evaluates the analytical binomial bound; it does not test the physical
-    assumptions or an arbitrary stopping/restarting rule. See the protocol's
+    assumptions or an arbitrary stopping/restarting rule. Conditional error bounds
+    must hold given the complete past filtration, including past error indicators. See the protocol's
     predeclared (C,E,R) rule. Positive underflow raises FloatingPointError.
     """
     return binomial_lower_tail(conclusive, errors, conditional_error_lower_bound)

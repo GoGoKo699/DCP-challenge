@@ -1,5 +1,17 @@
 # Validation Record
 
+## Scientific revision - 7 September 2026
+
+- Baseline: published version 1.1.1 at `288349b7cffd8e58f1acba60ec137534da02bc03`, tree `8196bcc3e88ce21a9d6b057a5208f2a14e33b7da`.
+- New dated analysis: `correction/SCIENTIFIC_REVISION_2026_09.md`. This records stronger one-sample/global and refreshed-secret results, exact answer-rate frontiers, a PPT certificate, and source-error-aware soundness. It is not independent peer review.
+- Local regression suite: **98 tests passed**, including 1268 individual result-field mutations.
+- Raw-state checks independently construct the input ensembles and attaining full-cell POVMs. Exact dyadic matrices verify the decomposable PPT identities; the leakage example is explicitly instantiated.
+- Independent GLOBAL/PPT linear programs: **96 cases passed**, using raw source preparation rather than the analytical state constructor; maximum observed absolute objective discrepancy `1.39e-16`. SciPy is an optional audit dependency only.
+- All six committed scientific result records validate. The five earlier records remain byte-for-byte unchanged.
+- The six historical root scripts and the August correction Markdown, TeX, and PDF remain byte-for-byte unchanged. Their narrower dated conclusions are supplemented, not silently rewritten.
+- No experiment or source calibration was performed. Population frontiers, ideal conclusive-count tests, and imperfect-source fixed-total-round tests have separately stated assumptions.
+- The workflow runs the 3.10-3.13 Python matrix plus the independent optimization audit. Live results are recorded in GitHub Actions.
+
 ## Software hardening - 7 September 2026
 
 - Baseline tree: `93caf96908663f256de153feee54afccb358d342`, matching published `main` at `449548426b83fc22a9939fb2c2f6dede74dcd6f4`.

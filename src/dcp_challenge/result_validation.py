@@ -89,7 +89,7 @@ def _load_csv(path: Path, expected: list[dict]) -> list[dict]:
 
 
 def validate_results(results_dir: Path) -> int:
-    """Validate all five result files without changing them or the repository."""
+    """Validate every registered result file without changing them or the repository."""
     expected = _expected_results()
     actual_names = {p.name for p in results_dir.iterdir() if p.suffix in (".json", ".csv")}
     if actual_names != set(expected):

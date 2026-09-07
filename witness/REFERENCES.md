@@ -16,10 +16,19 @@
 9. C. Branciard, D. Rosset, Y.-C. Liang, and N. Gisin, “Measurement-Device-Independent Entanglement Witnesses for All Entangled Quantum States,” *Physical Review Letters* **110**, 060405 (2013). [arXiv:1210.8037](https://arxiv.org/abs/1210.8037)
 10. X. Zhang and Q. Zhao, “Simultaneous Certification of Entangled States and Measurements in Bounded Dimensional Semi-Quantum Games,” *Physical Review Research* **2**, 033400 (2020). [arXiv:1911.05981](https://arxiv.org/abs/1911.05981)
 11. E. Bäumer, N. Gisin, and A. Tavakoli, “Demonstrating the power of quantum computers, certification of highly entangled measurements and scalable quantum nonlocality,” *npj Quantum Information* **7**, 117 (2021). [arXiv:2009.14028](https://arxiv.org/abs/2009.14028)
-12. K. Sen et al., “Noisy quantum input loophole in measurement-device-independent entanglement witnesses,” *Physical Review A* **103**, 062415 (2021). [arXiv:2012.09089](https://arxiv.org/abs/2012.09089)
+12. K. Sen et al., “Noisy quantum input loophole in measurement-device-independent entanglement witnesses,” *Physical Review A* **104**, 012429 (2021). [arXiv:2012.09089](https://arxiv.org/abs/2012.09089)
 
 ## DCP project
 
 13. R. Lin and W. Wen, “Quantum computation capability verification protocol for noisy intermediate-scale quantum devices with the dihedral coset problem,” *Physical Review A* **106**, 012430 (2022). [DOI](https://doi.org/10.1103/PhysRevA.106.012430) - [arXiv:2202.06984](https://arxiv.org/abs/2202.06984)
 
 The general maximum-confidence GLOBAL-versus-separable certification principle is established prior art. No novelty is claimed for that principle. No exact earlier DCP-specific construction with the present phase twirl and tight factor-three proof was located in the searches completed by 17 August 2026; this is not a formal novelty determination.
+
+
+## Additional background for the September rate-frontier revision
+
+14. E. Bagan, R. Muñoz-Tapia, G. A. Olivares-Rentería, and J. A. Bergou, “Optimal discrimination of quantum states with a fixed rate of inconclusive outcomes,” *Physical Review A* **86**, 040303(R) (2012). [DOI](https://doi.org/10.1103/PhysRevA.86.040303).
+15. U. Herzog, “Optimal state discrimination with a fixed rate of inconclusive results: Analytical solutions and relation to state discrimination with a fixed error rate,” *Physical Review A* **86**, 032314 (2012). [DOI](https://doi.org/10.1103/PhysRevA.86.032314).
+16. S. R. Howard, A. Ramdas, J. McAuliffe, and J. Sekhon, “Time-uniform Chernoff bounds via nonnegative supermartingales,” *Probability Surveys* **17**, 257-317 (2020). [DOI](https://doi.org/10.1214/18-PS321). The September implementation uses a fixed-horizon Hoeffding bound, not the general time-uniform results.
+
+The published journal locator for Sen et al. [12] is PRA 104, 012429; the arXiv identifier and linked work are unchanged.

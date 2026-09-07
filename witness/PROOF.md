@@ -1,4 +1,6 @@
-# Ideal Completeness, Separable Soundness, and Sequential Extension
+# Completeness, Restricted-Measurement Soundness, and Sequential Extension
+
+**Scientific extension dated 7 September 2026:** [The scientific revision](../correction/SCIENTIFIC_REVISION_2026_09.md) supplies the exact GLOBAL/SEP/PPT/LOCC answer-rate frontiers, an operator proof for PPT effects, a calibrated phase-noise family, and source-error-adjusted statistics. The original ideal proof below remains valid; it does not by itself establish robustness to arbitrary preparation errors.
 
 ## 1. Fourier-block decomposition
 
@@ -165,13 +167,13 @@ The tight separable product strategy reaches the same forced-guess value. The re
 
 For repeated rounds, a statement only about isolated POVM effects is not sufficient: a general instrument could alter persistent quantum memory. The sequential null class is therefore defined operationally.
 
-The prover begins with memory separable across the two-cell partition and, in every round, applies an adaptive **separable instrument** across the two cell-plus-memory sides. Every branch of such an instrument maps separable states to separable states. LOCC protocols are included. The prover may use arbitrary local ancillas, classical memory, and public-history-dependent choices.
+The prover begins with memory separable across the two-cell partition and, in every round, applies an adaptive **separable instrument** across the two cell-plus-memory sides. Concretely each outcome map has a product-Kraus representation $\mathcal I_z(X)=\sum_j(A_{zj}\otimes B_{zj})X(A_{zj}\otimes B_{zj})^\dagger$, with the sum over outcomes trace preserving. Every branch maps separable states to separable states. LOCC protocols are included; the phrase is not intended to include every more general separability-preserving map. The prover may use arbitrary local ancillas, classical memory, and public-history-dependent choices.
 
 Each new witness pair is independent of the past. The prover must output $0$, $1$, or $\perp$ before receiving the next pair.
 
 ### 7.2 Conditional one-round bound
 
-Fix any complete public history $h$ before a fresh round. Conditioned on $h$, the retained memory remains separable, so the effective POVM effects on the fresh pair are separable. Let
+Fix any complete past history $h$ before a fresh round, including the verifier's past preparation labels and past error indicators, whether or not those were disclosed to the prover. Conditioned on $h$, the retained memory remains separable, so the effective POVM effects on the fresh pair are separable. Let
 
 $$
 c(h)=\Pr[\text{correct conclusive}\mid h],
@@ -208,7 +210,7 @@ $$
 \Pr[\tau_k<\infty\mid\mathcal F_{k-1}],
 $$
 
-where $\mathcal F_{k-1}$ contains the complete history through the $(k-1)$st conclusive answer. Whenever the next conclusive answer occurs,
+where $\mathcal F_{k-1}$ contains the complete past history, including past correctness indicators, through the $(k-1)$st conclusive answer. This conditioning is legitimate because ideal sources are separable even conditional on their preparation labels. Whenever the next conclusive answer occurs,
 
 $$
 \boxed{
@@ -240,6 +242,15 @@ $$
 If the protocol imposes a maximum of $R$ total rounds, then the event $\tau_C\le R$ is a subset of $\tau_C<\infty$, so the same bound holds with $\tau_C\le R$.
 
 Thus adaptive abstention and variable waiting time do not create a fair-sampling loophole under the stated sequential null class.
+
+A finite-horizon argument avoids conditioning on eventual completion. Let $h(k,e)$ be the probability that $\mathrm{Binomial}(C-k,1/4)$ is at most $E-e$, with the boundary $h(C,e)=\mathbf1_{e\le E}$. Its recursion is
+
+$$
+h(k,e)=\tfrac34h(k+1,e)+\tfrac14h(k+1,e+1).
+$$
+
+Since $h(k+1,e)\ge h(k+1,e+1)$ and the conditional conclusive error is at least $1/4$, the value $h(k_t,e_t)$ is a nonnegative supermartingale over actual rounds, with abstention leaving $(k_t,e_t)$ unchanged. At the predeclared cutoff or completion time, the acceptance indicator is bounded by this terminal value. Taking expectations gives the binomial bound at $(0,0)$. It is an **unconditional false-certification bound**, not a bound after postselecting completed or successfully reported experiments.
+
 
 ## 8. Executable checks
 
