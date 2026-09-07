@@ -5,7 +5,7 @@ message: >-
   corrected probability, soundness, or statistical analysis.
 title: "DCP Challenge: Author Correction and Follow-Up Analysis"
 type: software
-version: 1.2.0
+version: 1.2.1
 date-released: 2026-09-07
 repository-code: "https://github.com/GoGoKo699/DCP-challenge"
 authors:
@@ -47,3 +47,6 @@ references:
     month: 9
     date-published: 2026-09-07
     url: "https://github.com/GoGoKo699/DCP-challenge/blob/main/correction/SCIENTIFIC_REVISION_2026_09.md"
+
+# Fixed release for the corrected code and consolidated note.
+url: "https://github.com/GoGoKo699/DCP-challenge/releases/tag/v1.2.1"

@@ -56,5 +56,9 @@ jobs:
         run: python -m pip install -e '.[audit]'
       - name: Independently optimize all rate-frontier cases
         run: python scripts/audit_scientific_frontier.py
+      - name: Audit complete-space certificates and adaptive stopping
+        env:
+          OPENBLAS_NUM_THREADS: "1"
+        run: python scripts/audit_release_science.py
       - name: Confirm audit did not modify tracked files
         run: git diff --exit-code
