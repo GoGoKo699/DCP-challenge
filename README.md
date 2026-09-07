@@ -76,6 +76,7 @@ python examples/reproduce_counterexample.py
 python examples/reproduce_one_sample_optimality.py
 python examples/reproduce_figure5.py
 python scripts/verify_historical_files.py
+python scripts/verify_checksums.py
 python scripts/validate_committed_results.py
 pytest -q
 ```
@@ -88,6 +89,14 @@ Same measurements, better decoder: 25/32 = 0.781250
 ```
 
 See [REPRODUCIBILITY.md](REPRODUCIBILITY.md) for fixed seeds, exact-versus-numerical distinctions, and validation tolerances. The completed checks are summarized in [VALIDATION_RECORD.md](VALIDATION_RECORD.md).
+
+### Numerical maintenance - 7 September 2026
+
+Software version 1.1.1 adds stable binomial and log-probability calculations,
+validation of every committed result field, deliberate-corruption tests, and
+complete checksum verification. The August scientific correction, PDF, and
+historical scripts are unchanged. See the [reproducibility guide](REPRODUCIBILITY.md)
+for the distinction between recomputation and archived Monte Carlo checks.
 
 ## Separate follow-up: phase-twirled heralded DCP witness
 

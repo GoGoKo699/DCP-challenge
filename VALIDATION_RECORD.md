@@ -1,5 +1,18 @@
 # Validation Record
 
+## Software hardening - 7 September 2026
+
+- Baseline tree: `93caf96908663f256de153feee54afccb358d342`, matching published `main` at `449548426b83fc22a9939fb2c2f6dede74dcd6f4`.
+- Local suite: **59 tests passed**, including 458 individual result-field mutations.
+- Previously overflowing binomial cases now agree with independent exact rational sums.
+- Positive probability underflow is explicit; finite log tails remain available.
+- All five committed result records and complete SHA-256 manifest coverage validate.
+- Historical scripts and the August scientific documents/PDF are unchanged.
+- The fast validator reuses archived large Monte Carlo counts and recomputes their arithmetic; it does not claim a fresh large simulation.
+- The automated workflow repeats tests and integrity checks on Python 3.10, 3.11, 3.12, and 3.13. Its live execution status is recorded in GitHub Actions, not inferred from this document.
+
+## August scientific validation
+
 **Validation date:** 17 August 2026  
 **Target:** author-correction repository state
 

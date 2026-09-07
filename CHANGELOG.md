@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.1.1-author-correction - 2026-09-07
+
+- Replaced overflow-prone binomial evaluation with scaled recurrence and log-tail APIs; positive underflow raises explicitly.
+- Expanded result validation to all five result files and 458 fields, including schemas, archived Monte Carlo metadata, and Wilson arithmetic.
+- Added tests corrupting every result field, checksum integrity tests, and exact rational statistical references.
+- Added complete manifest verification and Python 3.10-3.13 CI coverage.
+- Kept the August correction PDF, mathematics, results, historical scripts, and original release unchanged.
+- Fast checks explicitly distinguish archived Monte Carlo records from fresh simulation.
+
 ## 1.1.0-author-correction - 2026-08-17
 
 ### Referee-level revision

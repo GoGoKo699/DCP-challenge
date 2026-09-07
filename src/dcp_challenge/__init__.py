@@ -26,4 +26,4 @@ __all__ = [
     "one_sample_parity_distributions",
 ]
 
-__version__ = "1.1.0"
+__version__ = "1.1.1"
