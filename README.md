@@ -5,11 +5,11 @@ This repository accompanies the 2022 article:
 > Ruge Lin and Weiqiang Wen, “Quantum computation capability verification protocol for noisy intermediate-scale quantum devices with the dihedral coset problem,” *Physical Review A* **106**, 012430 (2022).  
 > DOI: `10.1103/PhysRevA.106.012430` - arXiv: `2202.06984`
 
-## Scientific status - updated 17 August 2026
+## Scientific status - updated 7 September 2026
 
 The original ParitySolve circuit is correct on its selected collision branch, but the original capability-verification interpretation is not.
 
-The quantity denoted by $p_B$ in the article is the success probability of one specified all-Hadamard decoder. For one all-Hadamard sample, that decoder is in fact Bayes-optimal. The failure begins when several samples reuse the same hidden secret: outcomes that reveal no parity individually can become informative through their correlations.
+The quantity denoted by $p_B$ in the article is the success probability of one specified all-Hadamard decoder. For one original DCP sample, that decoder is in fact optimal even against arbitrary quantum measurements under the stated uniform-secret priors. The failure begins when several samples reuse the same hidden secret: outcomes that reveal no parity individually can become informative through their correlations.
 
 An exact two-sample counterexample uses the same product measurements and only changes the classical decoder:
 
@@ -27,13 +27,25 @@ Therefore, this repository no longer presents $p>p_B$ as verification of quantum
 
 The complete statement is available in:
 
-- [Author correction in Markdown](correction/AUTHOR_CORRECTION.md)
+- [September scientific revision and proofs](correction/SCIENTIFIC_REVISION_2026_09.md)
+- [Dated August author correction in Markdown](correction/AUTHOR_CORRECTION.md)
 - [Author correction in PDF](correction/author_correction.pdf)
 - [Scientific status and claim map](SCIENTIFIC_STATUS.md)
 
 > This is an author-maintained repository correction by Ruge Lin. It is not an APS Erratum, has not been peer reviewed as a replacement article, and does not alter the journal version.
 
 The proof-of-concept IBM experiment is preserved in the historical code but is outside the scope of the present correction.
+
+## Revised scientific conclusions
+
+The [September revision](correction/SCIENTIFIC_REVISION_2026_09.md) adds scientific results, not just numerical implementation changes:
+
+- **Global optimality and a limitation on repairing the baseline.** The original special-outcome rule is optimal over every one-sample quantum measurement. Independently refreshing the full secret within a fixed parity class makes it globally optimal for any number of samples, so that repair also eliminates the collective accuracy advantage.
+- **Exact answer-rate frontier.** For the ideal pair source, joint confidence can exceed the best separable confidence only when the total conclusive rate is $q<1/N$. Zero-error answers have maximum rate $1/(2N)$. Increasing $N$ does not enlarge the best confidence gap; it lowers the usable answer rate.
+- **Stronger single-round witness.** An exact partial-transpose certificate extends the null to positive-partial-transpose (PPT) measurement effects. An ideal violation requires a negative partial transpose in a conclusive effect. The repeated-round operational theorem still uses separable instruments and separable memory.
+- **Explicit source-error boundaries.** A common, secret-independent local channel preserves the original null. Arbitrary small preparation leakage does not preserve its loss-independent 75 percent confidence ceiling. A conservative calibrated-source allowance and fixed-total-round statistical test are proved, with actual hardware calibration still outstanding.
+
+These are non-peer-reviewed repository results dated **7 September 2026**. They are not attributed retroactively to the 2022 article or the August correction. The original shared-secret verification claim remains withdrawn.
 
 ## Historical record
 
@@ -92,7 +104,7 @@ See [REPRODUCIBILITY.md](REPRODUCIBILITY.md) for fixed seeds, exact-versus-numer
 
 ### Numerical maintenance - 7 September 2026
 
-Software version 1.1.1 adds stable binomial and log-probability calculations,
+The numerical hardening introduced in version 1.1.1 provides stable binomial and log-probability calculations,
 validation of every committed result field, deliberate-corruption tests, and
 complete checksum verification. The August scientific correction, PDF, and
 historical scripts are unchanged. See the [reproducibility guide](REPRODUCIBILITY.md)
@@ -104,7 +116,7 @@ The directory [witness/](witness/) contains a new 2026 follow-up. It is not part
 
 Its narrow ideal-model claim is:
 
-> Against adaptive separable instruments across two trusted DCP input cells, every conclusive answer has conditional error at least $1/4$, while a Bell measurement has zero error and conclusive probability $1/(2N)$.
+> For the ideal source, adaptive separable instruments with separable memory have conclusive error at least $1/4$, while a Bell measurement has zero error and conclusive probability $1/(2N)$. Source errors must satisfy the separately stated noise or calibration assumptions.
 
 This is a DCP-specific maximum-confidence witness of a nonseparable joint measurement. For $N=2$, the complete circuit uses four qubits, at most three CNOT gates, only Clifford operations, and no mid-circuit measurement.
 
@@ -136,6 +148,7 @@ IBM.py ... verification.py   Original 2022 scripts, unchanged
 - `results/figure5_corrected.csv`
 - `results/heralded_witness_results.json`
 - `results/validation_crosschecks.json`
+- `results/scientific_revision_results.json`
 
 ## Citation
 
@@ -158,6 +171,13 @@ When relying on the corrected analysis, also identify:
 ```text
 Ruge Lin, “Author Technical Correction and Updated Analysis” for the DCP challenge article,
 DCP-challenge repository, author-correction-2026, 17 August 2026.
+```
+
+For the September optimality, answer-rate, and source-error results, also identify:
+
+```text
+Ruge Lin, “Scientific Revision: Global Optimality, Answer-Rate Limits, and Source Errors,”
+DCP-challenge repository, version 1.2.0, 7 September 2026.
 ```
 
 ## License status

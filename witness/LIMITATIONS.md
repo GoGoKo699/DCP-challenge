@@ -57,15 +57,23 @@ The construction does not certify:
 - device independence;
 - correctness of arbitrary device outputs.
 
-## Noise and robustness
+## September source-error revision
 
-The committed theorem is ideal-model. If the two actual parity ensembles are within trace distances $\epsilon_0$ and $\epsilon_1$ of their ideal values, the equal-prior linear score can shift by at most
+The [September scientific revision](../correction/SCIENTIFIC_REVISION_2026_09.md) replaces a single undifferentiated noise caveat with explicit results. A common secret-independent separable channel preserves the ideal separable bound. General trace-distance-bounded source errors instead require a score allowance; an arbitrarily small locally readable leakage component can have confidence one when a receiver selectively abstains. The fixed-round adjusted test is proved, but its error budgets must be calibrated outside the untrusted device.
+
+Actual imperfect input pairs must remain separable if persistent separable memory is allowed, or fresh separable memory must be imposed every round. Small trace distance alone does not prevent entangled faulty sources from seeding retained entanglement. The sequential null is not enlarged to arbitrary quantum memory or arbitrary PPT instruments.
+
+The exact answer-rate frontier also limits the scaling interpretation: there is no confidence gap for $q\ge1/N$, and increasing $N$ lowers the useful answer rate rather than increasing the maximum gap.
+
+## Original trace-distance observation
+
+The August theorem was ideal-model. If the two actual parity ensembles are within trace distances $\epsilon_0$ and $\epsilon_1$ of their ideal values, the equal-prior linear score can shift by at most
 
 $$
 2(\epsilon_0+\epsilon_1),
 $$
 
-because the score range has width four. This is not a complete calibrated experimental soundness theorem. A practical deployment must characterize trusted-input errors and incorporate them into the null threshold.
+because the score range has width four. The September revision turns this allowance into a fixed-round model-level false-certification bound. A practical deployment must still establish trusted-input error budgets, their conditional validity, absence of omitted side channels, and the memory assumptions; no laboratory calibration is supplied here.
 
 ## Relation to prior work
 

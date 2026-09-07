@@ -4,7 +4,7 @@ id,subject,status,scientific_basis,later_repository_treatment
 3,Complementary-label collision algebra,RETAIN,Produces phase (-1)^s on selected branch,Keep
 4,ParitySolve selected branch is exact when noiseless,RETAIN,Final H measurement returns parity exactly,Keep with branch qualification
 5,Special all-H outcomes identify parity with probability 1/N,RETAIN_AND_STRENGTHEN,Analytic least-significant-bit proof valid for every n,Replace numerical conjecture with theorem
-6,One-sample special-outcome decoder is optimal,NEW_PROVED_LEMMA,Parity-conditioned distributions differ only at y=1 and have total variation 1/N,State Bayes-optimality only for the complete one-sample all-H record
+6,One-sample special-outcome decoder is optimal,STRENGTHENED_2026_09,Full parity-averaged density matrices commute and have trace-norm difference 2/N,State global one-cell POVM optimality under uniform-secret equal-parity priors; keep August all-H proof as historical
 7,p_B formula,RETAIN_NARROWLY,Exact success of the special-outcome decoder only,Rename explicitly and remove soundness language
 8,p_B bounds every measurement/classical strategy,WITHDRAW,Exact N=4 two-sample decoder gives 25/32 versus 23/32,Prominent author correction
 9,p greater than p_B verifies quantum-computation capability,WITHDRAW,Threshold lacks a sound null-class bound and is explicitly defeated,Do not retain in current README
@@ -26,8 +26,15 @@ id,subject,status,scientific_basis,later_repository_treatment
 25,Heralded witness sequential soundness,NEW_PROVED_EXTENSION,Fresh rounds plus separable instruments preserve a conditional error lower bound of 1/4,State predeclared C E R and no-certificate rule
 26,Heralded witness certifies universal quantum computation,REJECT,It certifies a nonseparable joint measurement under trusted-input assumptions,Use narrow capability statement
 27,Heralded witness ordinary accuracy gap,REJECT,Joint and separable forced-guess success are equal,Use confidence/abstention score only
-28,Heralded witness experimental robustness,OPEN,Trace-distance perturbation bound exists but trusted-input calibration is not developed,Do not claim experimental soundness yet
+28,Heralded witness experimental robustness,MODEL_THEOREMS_WITH_CALIBRATION_OUTSTANDING,Common separable noise invariance; calibrated phase-model frontier; general source-error allowance and fixed-round concentration theorem,Distinguish model soundness from actual hardware calibration; do not apply ideal binomial test blindly to general source errors
 29,Historical relation to Lee-Bae 2026,RETAIN_WITH_CHRONOLOGY,2022 DCP challenge predates their explicit framework but did not prove its sound GLOBAL-versus-SEP separation,Credit both the earlier precursor and later independent sound framework without alleging dependence
 30,AI-assisted reanalysis,DISCLOSE,Substantial GPT-5.6 Pro assistance in research proofs code and documentation with human review,Give explicit public credit and retain responsibility with Ruge Lin
 31,Novelty of DCP heralded packaging,OPEN,Known maximum-confidence and semiquantum ingredients; exact DCP construction not located,Use conservative DCP-specific novelty language
 32,Floating-point result files reproduce byte-for-byte,WITHDRAW_PORTABILITY_CLAIM,Last-bit variation can depend on numerical libraries and processors,Validate exact quantities exactly and floating diagnostics within test tolerances
+33,Refreshed full secrets within fixed parity,NEW_PROVED_LIMITATION,Commuting tensor-power ensembles have exact global optimum equal to special product decoder,Do not propose secret refreshing alone as an accuracy-separation repair
+34,Full total-conclusive-rate frontier,NEW_PROVED_2026_09,Matching global and PPT upper certificates with explicit global and LOCC attaining POVMs,State no confidence gap at q >= 1/N and exact ideal curves
+35,Increasing DCP dimension improves confidence witness,REJECT,Best confidence gap stays 1/4 while zero-error answer rate falls as 1/(2N),Describe a DCP embedding rather than scalable hardness or resource-minimal advantage
+36,PPT extension of factor-three bound,NEW_PROVED_2026_09,Exact decomposable Bell-projector identity for full-cell effects,An ideal violation requires an NPT conclusive effect; no broad sequential PPT-instrument claim
+37,Uniform local source noise invalidates the witness,REJECT_AS_GENERAL_STATEMENT,Adjoint of a common secret-independent separable channel preserves separable effects,Retain soundness while allowing honest performance to deteriorate
+38,75 percent ceiling survives arbitrary small source errors at any loss,REJECT,Orthogonal locally readable leakage flags give confidence one at rate epsilon within trace distance epsilon,Include side channels and a calibrated allowance; distinguish uniform channels from label leakage
+39,General source-error finite-sample certificate,NEW_PROVED_WITH_ASSUMPTIONS,Conditional drift <= 2(epsilon_0+epsilon_1) and fixed-horizon Hoeffding bound for score range four,Require per-history source bounds and separable actual sources or reset memory; no hardware calibration claimed

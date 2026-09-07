@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def main(results_dir: Path = ROOT / "results") -> None:
     leaves = validate_results(results_dir)
-    print(f"Committed result validation passed: 5 files, {leaves} fields.")
+    print(f"Committed result validation passed: {leaves} fields.")
     print("Exact values recomputed; floating diagnostics checked with declared tolerances.")
     print("Monte Carlo records: archived counts/metadata and Wilson intervals checked; not re-simulated.")
 

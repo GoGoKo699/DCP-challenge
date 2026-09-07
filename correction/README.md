@@ -1,8 +1,7 @@
-# Author Correction Package
+# Author Correction and Scientific Revision
 
-- `AUTHOR_CORRECTION.md`: canonical readable source.
-- `author_correction.tex`: standalone LaTeX source.
-- `author_correction.pdf`: compiled A4 technical note.
-- `CLAIM_LEDGER.csv`: claim-by-claim status map governing repository wording.
+[September scientific revision](SCIENTIFIC_REVISION_2026_09.md): current global-optimality, rate-frontier, and source-error conclusions with proofs and reproducible checks.
 
-The note is author-maintained. It is not an APS Erratum and does not alter the journal version. The original proof-of-concept hardware experiment is outside its scope.
+[August correction](AUTHOR_CORRECTION.md): the dated original correction, with [PDF](author_correction.pdf), [standalone LaTeX source](author_correction.tex), and [claim ledger](CLAIM_LEDGER.csv). Its historical PDF and text are preserved; September's stronger results are separately dated.
+
+Neither is an APS Erratum or a peer-reviewed replacement article.

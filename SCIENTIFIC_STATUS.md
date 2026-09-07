@@ -1,78 +1,69 @@
 # Scientific Status and Claim Map
 
-**Last updated:** 17 August 2026  
+**Last scientific revision:** 7 September 2026  
 **Maintainer statement:** Ruge Lin
 
-This file is the short authoritative status map. Detailed derivations are in `correction/AUTHOR_CORRECTION.md`; the machine-readable ledger is `correction/CLAIM_LEDGER.csv`.
+The current scientific synthesis is [the September revision](correction/SCIENTIFIC_REVISION_2026_09.md). The [August correction](correction/AUTHOR_CORRECTION.md) and its PDF remain dated historical statements of the earlier analysis. The machine-readable map is [the claim ledger](correction/CLAIM_LEDGER.csv).
 
-## Retained
+## What remains withdrawn
 
-- normalized DCP sample definition;
-- post-Fourier reflection phase state;
-- complementary-label collision identity;
-- exact parity recovery on the selected ideal ParitySolve branch;
-- the special all-H outcome and its probability $1/N$;
-- the published collision formulas as upper and lower bounds;
-- ParitySolve as a structured DCP-derived circuit workload;
-- the original ideal and noise simulations as simulations of their specified models.
+The original shared-secret implication $p>p_B$ certifies quantum-computation capability is false. The exact all-Hadamard counterexample gives $25/32$ instead of $23/32$ by changing classical decoding alone. No September result reinstates that implication.
 
-## Retained and strengthened
+No general channel-security, computational-speedup, or universal-capability claim is adopted by this repository.
 
-For a single all-Hadamard sample, the published special-outcome decoder is Bayes-optimal among all classical decoders of the complete measurement record. The exact parity-conditioned distribution identity is
+## What remains valid
 
-$$
-P_0(r,y)-P_1(r,y)
-=
-\frac{(-1)^r}{N}\,\mathbf 1_{\{y=1\}}.
-$$
+The normalized DCP input, post-Fourier phase state, complementary-label collision algebra, and selected noiseless ParitySolve branch are valid. The old circuit is a structured workload. The exact occupancy formula, corrected Figure 5 probabilities, and Bernoulli standard error remain as established in August. Legacy noise simulations illustrate their specified models; they do not supply an adversarial robustness theorem.
 
-Its optimal equal-prior success probability is therefore
+## Stronger one-sample conclusion
+
+The original special-outcome all-Hadamard decoder reaches
 
 $$
-\frac12+\frac1{2N}.
+p_{\rm ALL}^{(1)}=\frac12+\frac1{2N}
 $$
 
-## Corrected
+over **all one-cell quantum POVMs**, for uniform preparation labels and equal parity priors. This strictly strengthens the August proof about decoding one all-H record.
 
-- The ideal honest success probability has an exact Stirling-number formula.
-- Figure 5(a) has negative exact honest separation from the special decoder.
-- Figure 5(b) has an exact honest gap of approximately 9.45 percent, not at least 10 percent.
-- Figure 5(c) retains an approximately 25.03 percent difference against the special decoder, but that comparison is not sound.
-- The standard error of empirical accuracy is $\sqrt{p(1-p)/r}$.
+If each sample independently refreshes its full secret within a fixed parity class, the averaged states commute. The joint optimum for $L$ samples is exactly
 
-## Withdrawn
+$$
+1-\frac12(1-1/N)^L,
+$$
 
-- $p_B$ bounds every weaker, product-measurement, or classically postprocessed strategy;
-- $p>p_B$ verifies the claimed quantum-computation capability;
-- no better nonqualifying strategy exists.
+already reached by the original product decoder. Refreshing those secrets is therefore not a route to an accuracy-based quantum separation. It is a different ensemble from the original same-secret task.
 
-The decisive reason is reuse of the same secret across several samples. Individually parity-neutral outcomes can carry parity through their cross-sample correlations.
+## Exact capability-witness frontier
 
-## Outside the correction scope
+Let $q$ be the total conclusive probability over all rounds. For the ideal phase-twirled pair, the optimum correct-conclusive probabilities are
 
-The four-qubit IBM run was a proof-of-concept experiment. It remains preserved in the historical code and is not reanalyzed or used to support the present correction.
+$$
+c_{\rm G}^{\max}(q)=\frac{q+\min(q,1/(2N))}{2},
+$$
 
-## New follow-up result
+$$
+c_{\rm SEP}^{\max}(q)=c_{\rm PPT}^{\max}(q)=c_{\rm LOCC}^{\max}(q)
+=\frac{q+\min(q/2,1/(2N))}{2}.
+$$
 
-The phase-twirled heralded witness is a separate 2026 author follow-up. Its ideal theorem supports only this claim:
+These are exact achieved optima, not heuristic baselines. A confidence advantage exists only at $0<q<1/N$. The largest gap is $1/4$ for every $N$; the zero-error answer rate decreases as $1/(2N)$. The DCP wrapping is not resource-minimal or a computational-hardness certificate.
 
-> It witnesses a nonseparable joint measurement across two trusted DCP input cells against adaptive separable instruments, including LOCC, across the cell partition.
+The single-round factor-three bound extends to positive-partial-transpose (PPT) effects. Violation thus witnesses a negative-partial-transpose (NPT) effective conclusive effect under the trusted-input assumptions. This does not identify a gate or certify every possible entangled measurement.
 
-The theorem is about confidence with abstention. It does not certify universal quantum computation, speedup, the full LFC architecture, or a specific internal gate.
+## Source errors and sequential testing
 
-## Historical relationship to later work
+- A common separable source channel independent of every hidden preparation variable preserves $c\le3w$. Local loss, dephasing, and other local channels can reduce honest performance without invalidating that null.
+- For a specified, externally calibrated phase-flip source model, exact noisy confidence frontiers are proved. At any nonzero dephasing, exactly zero-error nonzero-rate discrimination is lost.
+- General trace-distance source errors satisfy the conservative allowance $c-3w\le2(\epsilon_0+\epsilon_1)$. Small leakage together with selective abstention can defeat an unadjusted 75 percent confidence threshold.
+- The September note proves a fixed-total-round Hoeffding test with this allowance. Source-error budgets must hold conditional on history and include side channels. Persistent-memory soundness additionally needs separable actual sources or fresh separable memory per round.
+- The ideal conclusive-count binomial test is not automatically valid for general imperfect sources. Both statistical procedures require their respective predeclared stopping rules; neither permits discarded failed runs.
 
-The 2022 DCP challenge was an early DCP-specific trusted-input attempt to test joint inter-cell processing on near-term hardware. It predates Lee and Bae’s June 2026 GLOBAL-versus-SEP maximum-confidence framework, but it did not establish that framework’s sound separation. The present August 2026 reanalysis, assisted by GPT-5.6 Pro, identifies the relationship and supplies the sound DCP-specific formulation.
+These are model theorems, not laboratory validation. Actual source characterization, calibration uncertainty, and physical isolation remain to be established for an experiment.
 
-See `witness/HISTORICAL_CONTEXT.md` and `AI_ASSISTED_REANALYSIS.md`.
+## Scope and chronology
 
-## Still open
+The IBM experiment remains outside the correction scope; its original script is unchanged. The 2022 DCP challenge is an earlier DCP-specific trusted-input proposal, not a proof of the 2026 maximum-confidence theorem. The August reanalysis retains its explicit GPT-5.6 Pro acknowledgment. September's stronger statements have their own date and are also AI-assisted, with scientific responsibility remaining with Ruge Lin.
 
-- experimentally calibrated robustness of the heralded witness;
-- implementation when hidden trusted inputs cannot be supplied independently of an untrusted cloud interface;
-- adversaries with pre-shared entanglement or quantum communication across the cell partition;
-- formal novelty determination for the exact DCP packaging.
+General maximum-confidence and fixed-inconclusive-rate discrimination are established prior art. See [historical context](witness/HISTORICAL_CONTEXT.md) and [references](witness/REFERENCES.md). No exhaustive novelty determination has been made.
 
-## Journal record
-
-Nothing in this repository is an APS Erratum or a replacement for the journal article. The original paper and historical code remain citable and accessible. The repository adds an explicit author-maintained correction so that later readers do not treat the withdrawn threshold interpretation as established.
+No repository document is an APS Erratum, an independently peer-reviewed replacement, or a claim of universal computation, speedup, or device independence.

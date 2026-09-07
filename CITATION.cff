@@ -5,7 +5,7 @@ message: >-
   corrected probability, soundness, or statistical analysis.
 title: "DCP Challenge: Author Correction and Follow-Up Analysis"
 type: software
-version: 1.1.1-author-correction
+version: 1.2.0
 date-released: 2026-09-07
 repository-code: "https://github.com/GoGoKo699/DCP-challenge"
 authors:
@@ -37,3 +37,13 @@ references:
     month: 8
     date-published: 2026-08-17
     url: "https://github.com/GoGoKo699/DCP-challenge/tree/main/correction"
+
+  - type: generic
+    title: "Scientific Revision: Global Optimality, Answer-Rate Limits, and Source Errors"
+    authors:
+      - family-names: Lin
+        given-names: Ruge
+    year: 2026
+    month: 9
+    date-published: 2026-09-07
+    url: "https://github.com/GoGoKo699/DCP-challenge/blob/main/correction/SCIENTIFIC_REVISION_2026_09.md"

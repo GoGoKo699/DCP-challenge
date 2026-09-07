@@ -2,6 +2,10 @@
 
 > **Status:** New author follow-up, dated August 2026. It is not part of the 2022 article, has not been peer reviewed, and does not restore the article’s original general capability-verification claim.
 
+## September scientific extension
+
+[The complete scientific revision](../correction/SCIENTIFIC_REVISION_2026_09.md) proves the full answer-rate frontier and strengthens the single-round bound to PPT effects. The confidence advantage disappears at total conclusive rate $q\ge1/N$. A specified calibrated phase-noise model is solved exactly. General preparation errors require an adjusted statistical test: ideal loss tolerance is not immunity to hidden-label leakage.
+
 ## Narrow claim
 
 Under the trusted-input, timing, and memory assumptions in [LIMITATIONS.md](LIMITATIONS.md), the construction witnesses a **nonseparable joint measurement across two DCP input cells** against adaptive separable instruments, including LOCC, across that cell partition.

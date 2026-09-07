@@ -41,7 +41,7 @@ def _alter(value):
 
 
 def test_real_records_pass(records):
-    assert validate_results(records) == 458
+    assert validate_results(records) == 1268
 
 
 def test_every_json_leaf_is_checked(records):
@@ -60,7 +60,7 @@ def test_every_json_leaf_is_checked(records):
                 validate_results(records)
             mutations += 1
             path.write_text(original)
-    assert mutations == 410
+    assert mutations == 1220
 
 
 def test_every_csv_cell_is_checked(records):

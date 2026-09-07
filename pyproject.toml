@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "dcp-challenge-correction"
-version = "1.1.1"
+version = "1.2.0"
 description = "Corrected analytical tools and follow-up checks for the 2022 DCP challenge"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -20,6 +20,7 @@ classifiers = [
 ]
 
 [project.optional-dependencies]
+audit = ["scipy>=1.10,<2"]
 test = [
   "pytest>=8,<9"
 ]

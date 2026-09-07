@@ -35,3 +35,8 @@ The source code, exact tests, machine-readable results, proof limitations, and h
 - **August 2026:** Ruge Lin, assisted by GPT-5.6 Pro, identified the original DCP threshold failure, connected the project to the later framework, and developed the corrected DCP-specific witness.
 
 This chronology does not allege that later work depended on the DCP article. It records that the 2022 project was an earlier conceptual and experimental antecedent, while the sound DCP-specific theorem was obtained only in the 2026 reanalysis.
+
+
+## Separate September scientific revision
+
+The scientific revision dated 7 September 2026 was also developed with substantial AI assistance, covering unrestricted one-sample optimality, the independently refreshed-secret ensemble, exact confidence-rate frontiers, PPT certificates, and source-error assumptions and tests. It is a later extension, not a retroactive change to the August GPT-5.6 Pro provenance. The explicit proofs, raw-state checks, and independent optimization script are provided for inspection. Scientific responsibility remains with Ruge Lin; AI assistance is not independent peer review.
