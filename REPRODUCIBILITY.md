@@ -117,22 +117,84 @@ The tests cover:
 
 ```bash
 python scripts/validate_committed_results.py
+python scripts/verify_checksums.py
 ```
 
-Validation policy:
+The result validator checks all five JSON/CSV records, every field, duplicate
+representations in the core JSON, schemas, and finite-number requirements.
+It recomputes exact counterexamples, one-sample records, all Figure 5 analytical
+probabilities, the exact Figure 5(a) likelihood result, witness summaries,
+dense-matrix diagnostics, the 20,000-product-effect diagnostic, and tail examples.
+Expected values are built without reading the files under validation.
 
-- exact rational, integer, and combinatorial quantities are compared exactly;
-- fixed Monte Carlo records include seeds, trial counts, estimates, and Wilson intervals;
-- floating-point linear-algebra diagnostics are compared within the numerical tolerances encoded by the tests;
-- byte-identical portability of floating-point JSON across all numerical libraries and processors is not claimed.
+Integer and rational fields must agree exactly. Ordinary nonzero floating
+quantities use relative tolerance `1e-12` and zero absolute tolerance. Only the
+dense-matrix marginal residual permits absolute tolerance `1e-12`; this is not
+used to round small probabilities to zero. Byte-identical floating-point
+portability is not claimed. Validation uses explicit exceptions, so it also
+runs under `python -O`.
 
-To regenerate the quick committed outputs:
+**Monte Carlo boundary:** fast validation does not repeat the million-trial
+Figure 5(b) or the 60,000-trial Figure 5(c) experiment. It checks archived success
+counts, seeds, trial counts, estimates, and recomputed Wilson intervals, including
+the independent-seed cross-check records. These are archived evidence, not fresh
+simulation results. Deliberate-corruption tests alter each of the 458 result
+fields and require rejection, including changes made to duplicate records together.
+
+The checksum verifier additionally checks all tracked file bytes and complete
+manifest coverage. For an extracted source ZIP without Git, it checks the file
+tree excluding recognized local caches/build directories. Checksums detect
+snapshot changes, not scientific correctness or authenticity.
+
+To regenerate outputs without overwriting the archived files:
 
 ```bash
-python scripts/generate_results.py
+python scripts/generate_results.py --output /tmp/dcp-reference-results
 ```
 
-## 8. Historical software
+To explicitly rerun the larger Figure 5 simulations, use:
+
+```bash
+python scripts/generate_results.py --monte-carlo --output /tmp/dcp-fresh-monte-carlo
+```
+
+The latter still retains the separate historical independent-seed cross-check
+records. Fresh Monte Carlo output need not be byte-identical across numerical
+environments; it must not silently replace the archived record or be confused
+with the fast validator. Regeneration may change harmless last-bit diagnostics.
+
+## 8. Stable statistical evaluation
+
+The binomial routines use a scaled probability-mass recurrence and logarithms
+instead of multiplying huge coefficients by tiny powers. They require no new
+runtime dependency. For example, `binomial_lower_tail(2000, 400)` evaluates to
+approximately `7.183777008e-8` instead of overflowing.
+
+```python
+from dcp_challenge.statistics import (
+    binomial_lower_tail,
+    binomial_log_lower_tail,
+    adaptive_sequential_log_lower_tail_bound,
+)
+
+probability = binomial_lower_tail(2000, 400)
+log_probability = binomial_log_lower_tail(10000, 0)
+# log_probability is approximately -2876.8207245, not negative infinity.
+log_bound = adaptive_sequential_log_lower_tail_bound(10000, 0)
+```
+
+All logarithms are natural. When a positive tail would underflow to zero, the
+ordinary probability function raises `FloatingPointError` directing callers to
+the log API. A zero return is reserved for an exact-zero endpoint. Counts must
+be integers and probabilities must be finite and in `[0, 1]`.
+
+These are floating-point evaluations of the analytical bound, not certified
+interval-arithmetic enclosures. They do not validate physical trust assumptions,
+experimental stopping rules, or repeated selective restarts. Work and integer
+storage increase with experiment size. Tests include exact rational references,
+endpoint checks, tail monotonicity, and the previously overflowing cases.
+
+## 9. Historical software
 
 The original scripts require their 2022 Qibo environment and are not imported by the corrected test suite. `requirements-legacy.txt` records the historical dependency request. The proof-of-concept IBM experiment is preserved but is outside the present correction.
 

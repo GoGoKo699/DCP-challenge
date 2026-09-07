@@ -3,23 +3,33 @@ name: corrected-analysis-tests
 on:
   push:
   pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
   test:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.11", "3.12", "3.13"]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: ${{ matrix.python-version }}
           cache: pip
       - name: Install corrected package
-        run: python -m pip install -e .[test]
-      - name: Run exact and numerical regression tests
-        run: pytest -q
+        run: python -m pip install -e '.[test]'
+      - name: Verify complete checksum manifest
+        run: python scripts/verify_checksums.py
+      - name: Run exact, numerical, and corruption regression tests
+        run: python -m pytest -q
       - name: Verify historical root scripts
         run: python scripts/verify_historical_files.py
-      - name: Validate committed scientific results
+      - name: Validate every committed scientific result field
         run: python scripts/validate_committed_results.py
       - name: Reproduce decisive exact counterexample
         run: python examples/reproduce_counterexample.py
@@ -29,3 +39,5 @@ jobs:
         run: python examples/reproduce_figure5.py
       - name: Check minimal four-qubit circuit
         run: python examples/simulate_minimal_four_qubit_circuit.py
+      - name: Confirm validation did not modify tracked files
+        run: git diff --exit-code
